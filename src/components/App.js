@@ -71,7 +71,7 @@ export default class App extends Component {
                 {this.state.authed
                   ?
                   <li className="heading-nav-entry">
-                    <button onClick={() => {logout()}}>Logout</button>
+                    <button onClick={() => {logout()}}>Logout - {firebaseAuth().currentUser.email}</button>
                   </li>
                   : <span>
                       <li className="heading-nav-entry">

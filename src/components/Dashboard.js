@@ -4,9 +4,9 @@ import Header from './Header';
 import FindRide from './FindRide';
 import MyRides from './MyRides';
 import OfferRide from './OfferRide';
+import { firebaseAuth } from '../config/constants'
 
 const Dashboard = (props) => {
-
     return (
         <div>
             <Header />
