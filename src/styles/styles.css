@@ -1,7 +1,3 @@
-*{
-    //outline: thin solid red;
-}
-
 #app {
     width: 600px;
     padding: 20px;
@@ -9,5 +5,17 @@
 
 #dashboardHeader li {
     margin: 0px;
+}
+.title{
+    color: white;
+    font-weight: bold;
+    list-style-type: none;
+    font-size: 175%;
+    
+    margin-right: 2%;
+    float: right;
+}
+nav{
+    margin: 5% 0%;
 }
 

@@ -60,9 +60,10 @@ export default class App extends Component {
     return this.state.loading === true ? <h1>Loading</h1> : (
       <BrowserRouter>
         <div id='app'>
+          <div className='row'>
           <nav>
-              <ul className="heading-nav">
-                <li className="heading-nav-entry">
+              <ul className="heading-nav bg-black padding-medium ghost">
+                <li className="heading-nav-entry active">
                   <Link to="/">Home</Link>
                 </li>
                 <li className="heading-nav-entry">
@@ -81,8 +82,10 @@ export default class App extends Component {
                         <Link to="/register">Register</Link>
                       </li>
                     </span>}
+                    <li className="title">NM Rideshare</li>
               </ul>
           </nav>
+          </div>
           <div className="container">
             <div className="row">
               <Switch>
