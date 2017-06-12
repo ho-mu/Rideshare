@@ -16,7 +16,7 @@ database.setMonth(2010,2,rides)
 .catch((e)=>{console.log(e)})
 
 //get the data from Feb, 2010
-database.getMonth(2015,2)
+database.getMonth(2010,2)
 .then((response)=>{
     console.log("Got some data")
     console.log(response.val())
