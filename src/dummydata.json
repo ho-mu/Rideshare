@@ -1,0 +1,16 @@
+{
+    "rides": [
+            {"date"  : "6/12/2017",
+               "target": "FR",
+               "time"  : "10:00",
+               "max"   : 4,
+               "seats" : ["Jason, Scott"]
+                },
+            {"date"  : "6/12/2017",
+               "target": "DT",
+               "time"  : "10:00",
+               "max"   : 4,
+               "seats" : ["Matt, Holly"]
+                }
+            ]
+}
