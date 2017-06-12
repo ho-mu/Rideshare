@@ -32,10 +32,9 @@ const FindRide = (props) => {
     ]
 
     const displayRides = () => {
-        console.log('displaying rides');
         rideList = rides.map((ride,index) => {
             return (
-                <tr>
+                <tr key={index}>
                     <td>{ride.date}</td>
                     <td>{ride.direction}</td>
                     <td>{ride.departure}</td>
@@ -64,7 +63,9 @@ const FindRide = (props) => {
                         <th>Notes</th>
                     </tr>
                 </thead>
-                {rideList}
+                <tbody>
+                    {rideList}
+                </tbody>
             </table>
         </div>
     )

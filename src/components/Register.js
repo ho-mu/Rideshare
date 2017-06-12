@@ -20,15 +20,15 @@ export default class Register extends Component {
         <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="row">
-            <div className="large-4 columns">
+            <div className="large-6 columns">
               <label>Email</label>
-              <input ref={(email) => this.email = email} placeholder="Email"/>
+              <input type='email' ref={(email) => this.email = email} placeholder="Email"/>
             </div>
           </div>
           <div className="row">
-            <div className="large-4 columns">
+            <div className="large-6 columns">
               <label>Password</label>
-              <input type="password"  placeholder="Password" ref={(pw) => this.pw = pw} />
+              <input type="password" placeholder="Password" ref={(pw) => this.pw = pw} />
             </div>
           </div>
           {

@@ -6,6 +6,7 @@ import Home from './Home'
 import Dashboard from './Dashboard';
 import { logout } from '../helpers/auth'
 import { firebaseAuth } from '../config/constants'
+import './../styles/styles.css'
 
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
@@ -58,14 +59,14 @@ export default class App extends Component {
   render() {
     return this.state.loading === true ? <h1>Loading</h1> : (
       <BrowserRouter>
-        <div>
+        <div id='app'>
           <nav>
               <ul className="heading-nav">
                 <li className="heading-nav-entry">
                   <Link to="/">Home</Link>
                 </li>
                 <li className="heading-nav-entry">
-                  <Link to="/rides">Dashboard</Link>
+                  <Link to="/rides/myrides">Dashboard</Link>
                 </li>
                 {this.state.authed
                   ?
