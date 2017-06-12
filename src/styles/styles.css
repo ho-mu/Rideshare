@@ -1,8 +1,13 @@
 *{
-    outline: thin solid red;
+    //outline: thin solid red;
 }
 
 #app {
     width: 600px;
     padding: 20px;
 }
+
+#dashboardHeader li {
+    margin: 0px;
+}
+
