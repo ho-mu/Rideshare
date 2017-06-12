@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
 import Login from './Login'
 import Register from './Register'
@@ -7,6 +6,7 @@ import Home from './Home'
 import Dashboard from './protected/Dashboard'
 import { logout } from '../helpers/auth'
 import { firebaseAuth } from '../config/constants'
+
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
@@ -53,37 +53,34 @@ export default class App extends Component {
   componentWillUnmount () {
     this.removeListener()
   }
+
+
   render() {
     return this.state.loading === true ? <h1>Loading</h1> : (
       <BrowserRouter>
         <div>
-          <nav className="navbar navbar-default navbar-static-top">
-            <div className="container">
-              <div className="navbar-header">
-                <Link to="/" className="navbar-brand">Home</Link>
-              </div>
-              <ul className="nav navbar-nav pull-right">
-                <li>
-                  <Link to="/" className="navbar-brand">Home</Link>
+          <nav>
+              <ul className="heading-nav">
+                <li className="heading-nav-entry">
+                  <Link to="/">Home</Link>
                 </li>
-                <li>
-                  <Link to="/rides" className="navbar-brand">Dashboard</Link>
+                <li className="heading-nav-entry">
+                  <Link to="/rides">Dashboard</Link>
                 </li>
-                <li>
-                  {this.state.authed
-                    ? <button
-                        style={{border: 'none', background: 'transparent'}}
-                        onClick={() => {
-                          logout()
-                        }}
-                        className="navbar-brand">Logout</button>
-                    : <span>
-                        <Link to="/login" className="navbar-brand">Login</Link>
-                        <Link to="/register" className="navbar-brand">Register</Link>
-                      </span>}
-                </li>
+                {this.state.authed
+                  ?
+                  <li className="heading-nav-entry">
+                    <button onClick={() => {logout()}}>Logout</button>
+                  </li>
+                  : <span>
+                      <li className="heading-nav-entry">
+                        <Link to="/login">Login</Link>
+                      </li>
+                      <li className="heading-nav-entry">
+                        <Link to="/register">Register</Link>
+                      </li>
+                    </span>}
               </ul>
-            </div>
           </nav>
           <div className="container">
             <div className="row">

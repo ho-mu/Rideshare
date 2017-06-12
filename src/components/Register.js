@@ -16,16 +16,20 @@ export default class Register extends Component {
   }
   render () {
     return (
-      <div className="col-sm-6 col-sm-offset-3">
+      <div>
         <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label>Email</label>
-            <input className="form-control" ref={(email) => this.email = email} placeholder="Email"/>
+          <div className="row">
+            <div className="large-4 columns">
+              <label>Email</label>
+              <input ref={(email) => this.email = email} placeholder="Email"/>
+            </div>
           </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input type="password" className="form-control" placeholder="Password" ref={(pw) => this.pw = pw} />
+          <div className="row">
+            <div className="large-4 columns">
+              <label>Password</label>
+              <input type="password"  placeholder="Password" ref={(pw) => this.pw = pw} />
+            </div>
           </div>
           {
             this.state.registerError &&
@@ -35,7 +39,7 @@ export default class Register extends Component {
               &nbsp;{this.state.registerError}
             </div>
           }
-          <button type="submit" className="btn btn-primary">Register</button>
+          <button type="submit">Register</button>
         </form>
       </div>
     )
