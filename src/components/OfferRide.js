@@ -43,11 +43,6 @@ class OfferRide extends Component {
                 <form id='offer_form' onSubmit={this.handleSubmit}>
                     <hr />
                     <div className="row">
-                        <div className="small-12 columns">
-                            <label>User Name: {this.props.username}</label>
-                        </div>
-                    </div>
-                    <div className="row">
                         <div className="small-4 columns">
                             <label>Destination</label>
                             <select name='destination' onChange={this.handleChange}>

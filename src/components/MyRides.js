@@ -2,68 +2,79 @@ import React, {Component} from 'react';
 
 const MyRides = (props) => {
 
-    let rideList;
+    console.log(props);
 
-    const rides = [
-        {
-            date:'6/12/2017',
-            direction:'to Franklin',
-            departure: '12:00 pm',
-            driver: 'Jason',
-            openSeats: 5,
-            notes: 'non-smoking'
-        },
-        {
-            date:'6/14/2017',
-            direction:'to Franklin',
-            departure: '2:00 pm',
-            driver: 'Holly',
-            openSeats: 5,
-            notes: 'non-smoking'
-        },
-        {
-            date:'6/12/2017',
-            direction:'to Downtown',
-            departure: '10:00 am',
-            driver: 'Matt',
-            openSeats: 1,
-            notes: 'non-smoking because that is gross and smelly'
-        }
-    ]
+    const getDriverRides = () => {
+        let filteredRides = props.trips.filter((ride,index) => {
+            return (ride.driver === props.username)
+        })
 
-    const displayRides = () => {
-        console.log('displaying rides');
-        rideList = rides.map((ride,index) => {
+        return getTableRows(filteredRides);
+    }
+
+    const getPassengerRides = () => {
+        let filteredRides = props.trips.filter((ride,index) => {
+            for(let i=0; i<ride.passengers.length; i++){
+                if(props.username === ride.passengers[i]) return true;
+            }
+            return false;
+        })
+
+        return getTableRows(filteredRides);
+    }
+
+    const getTableRows = (rides) => {
+        return rides.map((ride,index) => {
             return (
                 <tr key={index}>
                     <td>{ride.date}</td>
-                    <td>{ride.direction}</td>
-                    <td>{ride.departure}</td>
+                    <td>{ride.destination}</td>
+                    <td>{ride.time}</td>
                     <td>{ride.driver}</td>
-                    <td>{ride.openSeats}</td>
+                    <td>{ride.maxSeats}</td>
                     <td>{ride.notes}</td>
                 </tr>
             )
         })
     }
 
-    displayRides();
+    let driverRides = getDriverRides();
+    let passengerRides = getPassengerRides();
+
+    
 
     return (
         <div>
+            <label className='label small secondary'>My driving rides</label>
             <table className='table'>
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Direction</th>
+                        <th>Destination</th>
                         <th>Departure Time</th>
                         <th>Driver</th>
-                        <th>Open Seats</th>
+                        <th>Max Seats</th>
                         <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {rideList}
+                    {driverRides}
+                </tbody>
+            </table>
+            <label className='label small secondary'>My passenger rides</label>
+            <table className='table'>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Destination</th>
+                        <th>Departure Time</th>
+                        <th>Driver</th>
+                        <th>Max Seats</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {passengerRides}
                 </tbody>
             </table>
         </div>
