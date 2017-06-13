@@ -7,6 +7,7 @@ import Dashboard from './Dashboard';
 import { logout } from '../helpers/auth'
 import { firebaseAuth } from '../config/constants'
 import './../styles/styles.css'
+const database = require('./../helpers/firebase.js');
 
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
@@ -26,7 +27,7 @@ function PublicRoute ({component: Component, authed, ...rest}) {
       {...rest}
       render={(props) => authed === false
         ? <Component {...props} />
-        : <Redirect to='/rides' />}
+        : <Redirect to='/rides/myrides' />}
     />
   )
 }
@@ -40,6 +41,19 @@ export default class App extends Component {
     loading: true,
   }
   componentDidMount () {
+
+
+      //load data on iniitial mount of app
+         database.getAllTrips()
+        .then((trips)=>{
+            const newTrips = Object.keys(trips.val()).map((tripKey=>{
+                return trips.val()[tripKey]
+            }))
+            this.props.loadAllTrips(newTrips)
+            
+        })
+
+
     this.removeListener = firebaseAuth().onAuthStateChanged((user) => {
       if (firebaseAuth().currentUser){
         //set the redux store!!!

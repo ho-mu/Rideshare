@@ -3,35 +3,8 @@ const database = require('./../helpers/firebase.js');
 const reducer = (prevState,action) => {
 
     if(prevState === undefined){
-         return{
-            trips:[
-                {
-                    date:'6/13/2017',
-                    driver:'Jason Boser',
-                    destination:'Franklin',
-                    time:'3:30pm',
-                    maxSeats:5,
-                    passengers:['Holly','Matt','Scott'],
-                    notes:''
-                },
-                {
-                    date:'6/12/2017',
-                    driver:'Holly',
-                    destination:'Downtown',
-                    time:'5:00pm',
-                    maxSeats:1,
-                    passengers:['Jason Boser'],
-                    notes:'handle bar rider'
-                }
-            ],
-            username:''
-        }
-
-        // database.getMonth(2010,2)
-        //     .then((res) => {
-        //         prevState = res.val();
-        //         console.log(prevState);
-        //     })
+         return {trips: [],
+         username: ''}
     }
 
     console.log(prevState);
@@ -39,6 +12,11 @@ const reducer = (prevState,action) => {
     const addNewTrip = (details) => {
         let results = [...prevState.trips];
         results.push(details);
+
+        //details.id=2
+        //SAVE THE TRIP TO FIREBASE
+        //database.addNewTrip(details)
+
         return results;
     }
 
@@ -57,6 +35,12 @@ const reducer = (prevState,action) => {
                 ...prevState,
                 username:action.username
             };
+        case 'LOAD_ALL_TRIPS':
+            return {
+                ...prevState,
+                trips: action.trips
+            }
+            break;
         default:
             return prevState;
     }

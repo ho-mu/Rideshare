@@ -1,12 +1,15 @@
 import {connect} from 'react-redux'; 
 import App from './../components/App';
-import {setUser} from './../actions/actions';
+import {setUser, loadAllTrips} from './../actions/actions';
 
 
 const mapDispatchToProps = (dispatch) => {
     return{
         setUser:(username) => {
             dispatch(setUser(username));
+        },
+        loadAllTrips:(trips)=>{
+            dispatch(loadAllTrips(trips))
         }
     }
 }

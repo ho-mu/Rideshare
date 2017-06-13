@@ -14,4 +14,11 @@ const addTrip = (details) => {
     };
 }
 
-export {setUser,addTrip}
+const loadAllTrips = (trips) =>{
+    return {
+        type: 'LOAD_ALL_TRIPS',
+        trips
+    }
+}
+
+export {setUser,addTrip,loadAllTrips}
