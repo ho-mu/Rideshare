@@ -12,6 +12,9 @@ export default class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     login(this.email.value, this.pw.value)
+      .then((res) => {
+          this.props.setUser(this.email.value)
+      })
       .catch((error) => {
           this.setState(setErrorMsg('Invalid username/password.'))
         })
