@@ -7,7 +7,7 @@ const reducer = (prevState,action) => {
             trips:[
                 {
                     date:'6/13/2017',
-                    driver:'Jason',
+                    driver:'Jason Boser',
                     destination:'Franklin',
                     time:'3:30pm',
                     maxSeats:5,
@@ -20,7 +20,7 @@ const reducer = (prevState,action) => {
                     destination:'Downtown',
                     time:'5:00pm',
                     maxSeats:1,
-                    passengers:[],
+                    passengers:['Jason Boser'],
                     notes:'handle bar rider'
                 }
             ],
