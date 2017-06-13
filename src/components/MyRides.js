@@ -62,7 +62,9 @@ const MyRides = (props) => {
                         <th>Notes</th>
                     </tr>
                 </thead>
-                {rideList}
+                <tbody>
+                    {rideList}
+                </tbody>
             </table>
         </div>
     )
