@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 
 const MyRides = (props) => {
 
-    console.log(props);
-
     const getDriverRides = () => {
         let filteredRides = props.trips.filter((ride,index) => {
             return (ride.driver === props.username)
@@ -41,11 +39,9 @@ const MyRides = (props) => {
     let driverRides = getDriverRides();
     let passengerRides = getPassengerRides();
 
-    
-
     return (
         <div>
-            <label className='label small secondary'>My driving rides</label>
+            <h3>My driving rides</h3>
             <table className='table'>
                 <thead>
                     <tr>
@@ -61,7 +57,7 @@ const MyRides = (props) => {
                     {driverRides}
                 </tbody>
             </table>
-            <label className='label small secondary'>My passenger rides</label>
+            <h3>My passenger rides</h3>
             <table className='table'>
                 <thead>
                     <tr>

@@ -21,4 +21,12 @@ const loadAllTrips = (trips) =>{
     }
 }
 
-export {setUser,addTrip,loadAllTrips}
+const addUserToTrip = (username, id) => {
+    return {
+        type:'ADD_USER_TO_TRIP',
+        username,
+        id
+    }
+}
+
+export {setUser,addTrip,addUserToTrip,loadAllTrips}

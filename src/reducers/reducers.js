@@ -5,19 +5,28 @@ const reducer = (prevState,action) => {
     if(prevState === undefined){
          return {trips: [],
          username: ''}
+
     }
 
-    console.log(prevState);
-
     const addNewTrip = (details) => {
+        let tripCount = prevState.trips.length;
         let results = [...prevState.trips];
-        results.push(details);
-
-        //details.id=2
-        //SAVE THE TRIP TO FIREBASE
-        //database.addNewTrip(details)
+        results.push(
+            {
+                ...details,
+                id:tripCount
+            }
+        );
 
         return results;
+    }
+
+    const updateTripPassengers = (username, id) => {
+        let updatedTrips = [...prevState.trips];
+        let newPassengers = [...updatedTrips[id].passengers]
+        newPassengers.push(username);
+        updatedTrips[id].passengers = newPassengers;
+        return updatedTrips;
     }
 
     switch(action.type){
@@ -27,9 +36,11 @@ const reducer = (prevState,action) => {
                 trips:addNewTrip(action.details)
             };
             break;
-        case 'RESERVE_RIDE':
-            return prevState;
-            break;
+        case 'ADD_USER_TO_TRIP':
+            return {
+                ...prevState,
+                trips:updateTripPassengers(action.username, action.id)
+            };
         case 'SET_USER':
             return {
                 ...prevState,

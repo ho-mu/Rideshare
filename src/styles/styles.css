@@ -1,5 +1,5 @@
 #app {
-    width: 600px;
+    width: 800px;
     padding: 20px;
 }
 
@@ -19,3 +19,6 @@ nav{
     margin: 5% 0%;
 }
 
+li{
+    list-style: none;
+}
