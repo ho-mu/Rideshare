@@ -11,9 +11,9 @@ export default class Register extends Component {
   state = { registerError: null }
   handleSubmit = (e) => {
     e.preventDefault()
-    auth(this.email.value, this.pw.value)
+    auth(this.email.value, this.pw.value, this.username.value)
       .then((res) => {
-          this.props.setUser(this.email.value)
+          this.props.setUser(this.username.value)
       })
       .catch(e => this.setState(setErrorMsg(e)))
   }
@@ -22,6 +22,12 @@ export default class Register extends Component {
       <div>
         <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
+          <div className="row">
+            <div className="small-6 columns">
+              <label>Name</label>
+              <input type='text' placeholder="First & Last" ref={(username) => this.username= username}/>
+            </div>
+          </div>
           <div className="row">
             <div className="large-6 columns">
               <label>Email</label>

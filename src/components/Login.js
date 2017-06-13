@@ -13,7 +13,7 @@ export default class Login extends Component {
     e.preventDefault()
     login(this.email.value, this.pw.value)
       .then((res) => {
-          this.props.setUser(this.email.value)
+          this.props.setUser(res.displayName)
       })
       .catch((error) => {
           this.setState(setErrorMsg('Invalid username/password.'))
