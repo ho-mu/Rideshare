@@ -9,12 +9,10 @@ const reducer = (prevState,action) => {
     }
 
     const addNewTrip = (details) => {
-        let tripCount = prevState.trips.length;
         let results = [...prevState.trips];
         results.push(
             {
-                ...details,
-                id:tripCount
+                ...details
             }
         );
 

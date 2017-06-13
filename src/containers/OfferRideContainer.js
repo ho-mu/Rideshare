@@ -5,7 +5,8 @@ import {addTrip} from './../actions/actions';
 
 const mapStateToProps = (state) => {
     return {
-        username:state.username
+        username:state.username,
+        trips:state.trips
     }
 }
 

@@ -1,3 +1,5 @@
+const database = require('./../helpers/firebase.js');
+
 import React, { Component } from 'react';
 let dateFormat = require('dateformat');
 
@@ -22,7 +24,7 @@ class OfferRide extends Component {
     
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(event);
+        let id = Object.keys(this.props.trips).length;
         this.props.addTrip({
             date:this.state.date,
             time:this.state.time,
@@ -30,7 +32,19 @@ class OfferRide extends Component {
             destination:this.state.destination,
             maxSeats:this.state.maxSeats,
             passengers:[''],
-            notes:this.state.notes
+            notes:this.state.notes,
+            id
+        })
+
+        database.addNewTrip({
+            date:this.state.date,
+            time:this.state.time,
+            driver:this.props.username,
+            destination:this.state.destination,
+            maxSeats:this.state.maxSeats,
+            passengers:[''],
+            notes:this.state.notes,
+            id
         })
     }
 
@@ -49,8 +63,8 @@ class OfferRide extends Component {
                         <div className="small-4 columns">
                             <label>Destination</label>
                             <select name='destination' onChange={this.handleChange}>
-                                <option value='downtown'>Downtown</option>
-                                <option value='franklin'>Franklin</option>
+                                <option value='Downtown'>Downtown</option>
+                                <option value='Franklin'>Franklin</option>
                             </select>
                         </div>
                         <div className="small-4 columns">
