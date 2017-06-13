@@ -21,9 +21,15 @@ const reducer = (prevState,action) => {
 
     const updateTripPassengers = (username, id) => {
         let updatedTrips = [...prevState.trips];
-        let newPassengers = [...updatedTrips[id].passengers]
+        
+        let targetTrip = updatedTrips.find((trip)=>{
+            return trip.id==id
+        })
+        console.log("target trip", targetTrip)
+        let newPassengers = [...targetTrip.passengers]
+        
         newPassengers.push(username);
-        updatedTrips[id].passengers = newPassengers;
+        targetTrip.passengers = newPassengers;
         return updatedTrips;
     }
 

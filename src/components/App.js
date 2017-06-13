@@ -47,7 +47,13 @@ export default class App extends Component {
          database.getAllTrips()
         .then((trips)=>{
             const newTrips = Object.keys(trips.val()).map((tripKey=>{
-                return trips.val()[tripKey]
+              const newTrip = {...trips.val()[tripKey]}
+                if (!newTrip.passengers)
+                  //if passengers isn't here, add it as an empty array....
+                  //is this a hack?????
+                
+                  newTrip.passengers = []
+                return newTrip
             }))
             this.props.loadAllTrips(newTrips)
             

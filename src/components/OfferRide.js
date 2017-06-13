@@ -31,7 +31,7 @@ class OfferRide extends Component {
             driver:this.props.username,
             destination:this.state.destination,
             maxSeats:this.state.maxSeats,
-            passengers:[''],
+            passengers:[],
             notes:this.state.notes,
             id
         })
@@ -42,7 +42,7 @@ class OfferRide extends Component {
             driver:this.props.username,
             destination:this.state.destination,
             maxSeats:this.state.maxSeats,
-            passengers:[''],
+            passengers:[],
             notes:this.state.notes,
             id
         })

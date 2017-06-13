@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+const database = require('./../helpers/firebase.js');
 
 class FindRide extends Component {
 
@@ -29,7 +30,6 @@ class FindRide extends Component {
                 (openSeats === 0? true:false) ||
                 (trip.driver === this.props.username) ||
                 (trip.passengers.indexOf(this.props.username) >= 0)
-            
             return (
                 <tr key={index}>
                     <td>{trip.date}</td>
@@ -45,7 +45,8 @@ class FindRide extends Component {
     }
 
     handleBooking = (event) => {
-        this.props.addUserToTrip(this.props.username, event.target.name);
+        this.props.addUserToTrip(this.props.username, event.target.name)
+        database.updateTrip(this.props.trips.find((trip)=>trip.id==event.target.name))
     }
 
     render(){
