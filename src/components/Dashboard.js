@@ -3,7 +3,7 @@ import {Route} from 'react-router-dom';
 import HeaderContainer from './../containers/HeaderContainer';
 import FindRide from './FindRide';
 import MyRides from './MyRides';
-import OfferRide from './OfferRide';
+import OfferRideContainer from './../containers/OfferRideContainer';
 import { firebaseAuth } from '../config/constants'
 
 const Dashboard = (props) => {
@@ -12,7 +12,7 @@ const Dashboard = (props) => {
             <HeaderContainer />
             <Route path='/rides/myrides' component={MyRides} />
             <Route path='/rides/findride' component={FindRide} />
-            <Route path='/rides/offerride' component={OfferRide} />
+            <Route path='/rides/offerride' component={OfferRideContainer} />
         </div>
     )
 }
