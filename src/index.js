@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import AppContainer from './containers/AppContainer';
 import { Provider } from 'react-redux'
 import './index.css';
 
@@ -14,7 +14,7 @@ let store = createStore(
 
 const render = () => ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <AppContainer />
     </Provider>,
     document.getElementById('root')
 );

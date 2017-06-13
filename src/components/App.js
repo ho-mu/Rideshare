@@ -31,6 +31,9 @@ function PublicRoute ({component: Component, authed, ...rest}) {
   )
 }
 
+
+
+
 export default class App extends Component {
   state = {
     authed: false,
@@ -38,6 +41,11 @@ export default class App extends Component {
   }
   componentDidMount () {
     this.removeListener = firebaseAuth().onAuthStateChanged((user) => {
+      if (firebaseAuth().currentUser){
+        //set the redux store!!!
+        this.props.setUser(firebaseAuth().currentUser.displayName)
+      }
+      
       if (user) {
         this.setState({
           authed: true,

@@ -3,7 +3,7 @@ const database = require('./../helpers/firebase.js');
 const reducer = (prevState,action) => {
 
     if(prevState === undefined){
-        return{
+         return{
             trips:[
                 {
                     date:'6/13/2017',
