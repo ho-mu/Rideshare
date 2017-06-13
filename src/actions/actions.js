@@ -7,4 +7,11 @@ const setUser = (username) => {
     };
 }
 
-export {setUser}
+const addTrip = (details) => {
+    return {
+        type:'ADD_TRIP',
+        details
+    };
+}
+
+export {setUser,addTrip}
