@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
-import Login from './Login'
-import Register from './Register'
+import LoginContainer from './../containers/LoginContainer'
+import RegisterContainer from './../containers/RegisterContainer'
 import Home from './Home'
 import Dashboard from './Dashboard';
 import { logout } from '../helpers/auth'
@@ -90,8 +90,8 @@ export default class App extends Component {
             <div className="row">
               <Switch>
                 <Route path='/' exact component={Home} />
-                <PublicRoute authed={this.state.authed} path='/login' component={Login} />
-                <PublicRoute authed={this.state.authed} path='/register' component={Register} />
+                <PublicRoute authed={this.state.authed} path='/login' component={LoginContainer} />
+                <PublicRoute authed={this.state.authed} path='/register' component={RegisterContainer} />
                 <PrivateRoute authed={this.state.authed} path='/rides' component={Dashboard} />
                 <Route render={() => <h3>No Match</h3>} />
               </Switch>
