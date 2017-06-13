@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+let dateFormat = require('dateformat');
+
+
 
 class OfferRide extends Component {
 
     state = {
-        date:'',
-        time:'',
-        destination:'',
-        maxSeats:0,
+        date:dateFormat(new Date(), "yyyy/mm/dd"),
+        time:'6:00 AM',
+        destination:'Downtown',
+        maxSeats:1,
         notes:''
     }
 

@@ -14,4 +14,12 @@ const addTrip = (details) => {
     };
 }
 
-export {setUser,addTrip}
+const addUserToTrip = (username, id) => {
+    return {
+        type:'ADD_USER_TO_TRIP',
+        username,
+        id
+    }
+}
+
+export {setUser,addTrip,addUserToTrip}

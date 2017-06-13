@@ -1,74 +1,79 @@
 import React, {Component} from 'react';
 
-const FindRide = (props) => {
+class FindRide extends Component {
 
-    let rideList;
+    state = {
+        date:'',
+        tripList:[]
+    }
 
-    const rides = [
-        {
-            date:'6/12/2017',
-            direction:'to Franklin',
-            departure: '12:00 pm',
-            driver: 'Jason',
-            openSeats: 5,
-            notes: 'non-smoking'
-        },
-        {
-            date:'6/14/2017',
-            direction:'to Franklin',
-            departure: '2:00 pm',
-            driver: 'Holly',
-            openSeats: 5,
-            notes: 'non-smoking'
-        },
-        {
-            date:'6/12/2017',
-            direction:'to Downtown',
-            departure: '10:00 am',
-            driver: 'Matt',
-            openSeats: 1,
-            notes: 'non-smoking because that is gross and smelly'
-        }
-    ]
+    filterTrips = (event) => {
+        let dateFilter = event.target.value;
 
-    const displayRides = () => {
-        rideList = rides.map((ride,index) => {
+        let filteredTrips = this.props.trips.filter((trip,index) => {
+            console.log(trip.date, dateFilter);
+            if(trip.date === dateFilter) return true;
+            else return false;
+        })
+
+        this.setState({
+            date:dateFilter,
+            tripList:filteredTrips
+        });
+    }
+
+    getTripComponents = (filteredTrips) => {
+        return filteredTrips.map((trip,index) => {
+            let openSeats = trip.maxSeats - trip.passengers.length;
+            let disabledStatus = 
+                (openSeats === 0? true:false) ||
+                (trip.driver === this.props.username) ||
+                (trip.passengers.indexOf(this.props.username) >= 0)
+            
             return (
                 <tr key={index}>
-                    <td>{ride.date}</td>
-                    <td>{ride.direction}</td>
-                    <td>{ride.departure}</td>
-                    <td>{ride.driver}</td>
-                    <td>{ride.openSeats}</td>
-                    <td>{ride.notes}</td>
+                    <td>{trip.date}</td>
+                    <td>{trip.destination}</td>
+                    <td>{trip.time}</td>
+                    <td>{trip.driver}</td>
+                    <td>{openSeats}</td>
+                    <td>{trip.notes}</td>
+                    <td><button name={trip.id} disabled={disabledStatus} onClick={this.handleBooking}>Book Ride</button></td>
                 </tr>
             )
         })
     }
 
-    displayRides();
+    handleBooking = (event) => {
+        this.props.addUserToTrip(this.props.username, event.target.name);
+    }
 
-    return (
-        <div>
-            <label>Date:</label>
-            <input type='date' onSelect={displayRides} />
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Direction</th>
-                        <th>Departure Time</th>
-                        <th>Driver</th>
-                        <th>Open Seats</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rideList}
-                </tbody>
-            </table>
-        </div>
-    )
+    render(){
+        let tripComponents = this.getTripComponents(this.state.tripList);
+
+        return (
+            <div>
+                <label>Date:</label>
+                <input type='date' onChange={this.filterTrips} />
+                <table className='table'>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Destination</th>
+                            <th>Departure Time</th>
+                            <th>Driver</th>
+                            <th>Available Seats</th>
+                            <th>Notes</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tripComponents}
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
 }
 
 export default FindRide;
