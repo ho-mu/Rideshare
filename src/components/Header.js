@@ -16,7 +16,11 @@ class Header extends Component {
     render(){
         return (
             <div>
-                <h2>Welcome, {this.props.userName}</h2>
+                <div className="row">
+                    <div className="small-12 columns">
+                        <h2>Welcome, {this.props.userName}</h2>
+                    </div>
+                </div>
                 <ul id='dashboardHeader' className='filter-nav row'>
                     <li className={this.state.activeTab === 'myrides'? 
                             "filter-nav-entry active small-4 columns":

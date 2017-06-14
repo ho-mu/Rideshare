@@ -89,7 +89,7 @@ export default class App extends Component {
       <BrowserRouter>
         <div id='app'>
           <div className='row'>
-          <nav>
+            <nav>
               <ul className="heading-nav bg-black padding-medium ghost">
                 {this.state.authed
                   ?
@@ -104,9 +104,9 @@ export default class App extends Component {
                         <Link to="/register">Register</Link>
                       </li>
                     </span>}
-                    <li className="title">NM Rideshare</li>
+                  <li className="text-right title">NM Rideshare</li>
               </ul>
-          </nav>
+            </nav>
           </div>
           <div className="container">
             <div className="row">

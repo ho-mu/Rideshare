@@ -47,41 +47,44 @@ const MyRides = (props) => {
     let passengerRides = getPassengerRides();
 
     return (
-        <div>
-            <h4>My driving rides</h4>
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Departure Time</th>
-                        <th>Destination</th>
-                        <th>Driver</th>
-                        <th>Max Seats</th>
-                        <th>Passengers</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {driverRides}
-                </tbody>
-            </table>
-            <h4>My passenger rides</h4>
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Destination</th>
-                        <th>Departure Time</th>
-                        <th>Driver</th>
-                        <th>Max Seats</th>
-                        <th>Passengers</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {passengerRides}
-                </tbody>
-            </table>
+        <div className="row">
+            <div class="small-12 columns sg-content">
+                <br/>
+                <h4>My driving rides</h4>
+                <table className='table'>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Departure Time</th>
+                            <th>Destination</th>
+                            <th>Driver</th>
+                            <th>Max Seats</th>
+                            <th>Passengers</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {driverRides}
+                    </tbody>
+                </table>
+                <h4>My passenger rides</h4>
+                <table className='table'>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Destination</th>
+                            <th>Departure Time</th>
+                            <th>Driver</th>
+                            <th>Max Seats</th>
+                            <th>Passengers</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {passengerRides}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

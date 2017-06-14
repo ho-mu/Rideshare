@@ -64,7 +64,7 @@ class OfferRide extends Component {
                 <div className="row">
                     <div className="small-12 columns">
                         <label>Date</label>
-                        <input type='date' value={this.state.date} name='date' onChange={this.handleChange}/>
+                        <input className="small-9 medium-4 large-3 xlarge-2 column" type='date' value={this.state.date} name='date' onChange={this.handleChange}/>
                     </div>
                 </div>
                 <form id='offer_form' onSubmit={this.handleSubmit}>
@@ -123,11 +123,15 @@ class OfferRide extends Component {
                     <div className="row">
                     </div>
                     <div className="row">
-                        <div className="large-6 columns">
-                            <textarea name='notes' onChange={this.handleChange} value={this.state.notes} placeholder='Add notes here...'></textarea>
+                        <div className="small-12 columns">
+                            <textarea name='notes' value={this.state.notes} onChange={this.handleChange} placeholder='Add notes here...'></textarea>
                         </div>
                     </div>
-                    <button>Submit</button>
+                    <div className="row">
+                        <div className="small-3 columns">
+                            <button>Submit</button>
+                        </div>
+                    </div>
                     <hr />
                 </form>
             </div>
