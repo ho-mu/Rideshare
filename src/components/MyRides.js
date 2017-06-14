@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+const database = require('./../helpers/firebase.js');
 
 const MyRides = (props) => {
 
@@ -30,16 +31,25 @@ const MyRides = (props) => {
                     <td>{ride.destination}</td>
                     <td>{ride.driver}</td>
                     <td>{ride.maxSeats}</td>
-                    <td>{getPassengerTags(ride.passengers)}</td>
+                    <td>{getPassengerTags(ride.passengers, ride.id)}</td>
                     <td>{ride.notes}</td>
                 </tr>
             )
         })
     }
 
-    const getPassengerTags = (passengers) =>{
-        return passengers.map((passenger) => {
-            return <p>{passenger}</p>
+    const removePassenger = (event)=> {
+        let tripID = event.target.name
+        props.removePassenger(event.target.id, tripID)
+        database.updateTrip(props.trips.find((trip)=>trip.id==tripID))
+    }
+ 
+    const getPassengerTags = (passengers, tripID) =>{
+        return passengers.map((passenger, index) => {
+            if(passenger === props.username){
+                return <div key={index}>{passenger}<button className='icon icon-close' name={tripID} id={passenger}  onClick={removePassenger} ></button></div> 
+            }
+            return <div key={index}>{passenger}<button className='icon'></button></div>
         })
     }
 
@@ -48,7 +58,7 @@ const MyRides = (props) => {
 
     return (
         <div className="row">
-            <div class="small-12 columns sg-content">
+            <div className="small-12 columns sg-content">
                 <br/>
                 <h4>My driving rides</h4>
                 <table className='table'>

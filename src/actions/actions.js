@@ -29,4 +29,12 @@ const addUserToTrip = (username, id) => {
     }
 }
 
-export {setUser,addTrip,addUserToTrip,loadAllTrips}
+const removePassenger = (passenger, id) => {
+    return {
+        type:'REMOVE_PASSENGER',
+        passenger,
+        id
+    }
+}
+
+export {setUser,addTrip,addUserToTrip,loadAllTrips, removePassenger}

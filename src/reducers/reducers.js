@@ -33,13 +33,29 @@ const reducer = (prevState,action) => {
         return updatedTrips;
     }
 
+    const removePassenger = (passenger, id) => {
+        let updatedTrips = [...prevState.trips]
+
+        let targetTrip = updatedTrips.find((trip) => {
+            return trip.id==id
+        })
+
+        let newPassengers = [...targetTrip.passengers]
+        let index = newPassengers.indexOf(passenger)
+        newPassengers.splice(index)
+
+        targetTrip.passengers = newPassengers
+
+        return updatedTrips
+        
+    }
+
     switch(action.type){
         case 'ADD_TRIP':
             return {
                 ...prevState,
                 trips:addNewTrip(action.details)
             };
-            break;
         case 'ADD_USER_TO_TRIP':
             return {
                 ...prevState,
@@ -55,7 +71,11 @@ const reducer = (prevState,action) => {
                 ...prevState,
                 trips: action.trips
             }
-            break;
+        case 'REMOVE_PASSENGER':
+            return {
+                ...prevState,
+                trips: removePassenger(action.passenger, action.id)
+            }
         default:
             return prevState;
     }
