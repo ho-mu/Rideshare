@@ -15,6 +15,9 @@ const dbHelper = {
     },
     getAllTrips : ()=>{
         return ref.child(`/trips`).once('value')
+    },
+    subscribeToTripChanges : (cb)=>{
+        return ref.child(`/trips`).on('value', cb)        
     }
 }
 

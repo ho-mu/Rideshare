@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
-const database = require('./../helpers/firebase.js');
 import {filterTrips} from './../helpers/apiHelper';
 
-const MyRides = (props) => {
+const MyDrives = (props) => {
 
-    const getPassengerRides = () => {
+    const getDriverRides = () => {
         let filteredRides = filterTrips(
             props.trips, 
             {
                 username:props.username,
-                matchTo:'passenger'
+                matchTo:'driver'
             }
         )
 
@@ -25,29 +24,20 @@ const MyRides = (props) => {
                     <td>{ride.destination}</td>
                     <td>{ride.driver}</td>
                     <td>{ride.maxSeats}</td>
-                    <td>{getPassengerTags(ride.passengers, ride.id)}</td>
+                    <td>{getPassengerTags(ride.passengers)}</td>
                     <td>{ride.notes}</td>
                 </tr>
             )
         })
     }
 
-    const removePassenger = (event)=> {
-        let tripID = event.target.name
-        props.removePassenger(event.target.id, tripID)
-        database.updateTrip(props.trips.find((trip)=>trip.id==tripID))
-    }
- 
-    const getPassengerTags = (passengers, tripID) =>{
-        return passengers.map((passenger, index) => {
-            if(passenger === props.username){
-                return <div key={index}>{passenger}<button className='icon icon-close' name={tripID} id={passenger}  onClick={removePassenger} ></button></div> 
-            }
-            return <div key={index}>{passenger}<button className='icon'></button></div>
+    const getPassengerTags = (passengers) =>{
+        return passengers.map((passenger) => {
+            return <p>{passenger}</p>
         })
     }
 
-    let passengerRides = getPassengerRides();
+    let driverRides = getDriverRides();
 
     return (
         <div className="row">
@@ -57,8 +47,8 @@ const MyRides = (props) => {
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>Destination</th>
                             <th>Departure Time</th>
+                            <th>Destination</th>
                             <th>Driver</th>
                             <th>Max Seats</th>
                             <th>Passengers</th>
@@ -66,7 +56,7 @@ const MyRides = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {passengerRides}
+                        {driverRides}
                     </tbody>
                 </table>
             </div>
@@ -74,4 +64,4 @@ const MyRides = (props) => {
     )
 }
 
-export default MyRides;
+export default MyDrives;
