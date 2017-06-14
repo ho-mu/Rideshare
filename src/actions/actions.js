@@ -44,4 +44,11 @@ const updateTripFilter = (filter) => {
     }
 }
 
-export {setUser,addTrip,addUserToTrip,loadAllTrips,removePassenger,updateTripFilter}
+const removeTrip = (id) => {
+    return{
+        type:'REMOVE_TRIP',
+        id
+    }
+}
+
+export {setUser,addTrip,addUserToTrip,loadAllTrips,removePassenger,updateTripFilter, removeTrip}

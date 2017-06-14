@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 const database = require('./../helpers/firebase.js');
 import {filterTrips} from './../helpers/apiHelper';
+const removeImg = require('./../images/remove_img.png');
 
 const MyRides = (props) => {
 
@@ -41,9 +42,10 @@ const MyRides = (props) => {
     const getPassengerTags = (passengers, tripID) =>{
         return passengers.map((passenger, index) => {
             if(passenger === props.username){
-                return <div key={index}>{passenger}<button className='icon icon-close' name={tripID} id={passenger}  onClick={removePassenger} ></button></div> 
+                // return <div key={index}>{passenger}<button className='icon icon-close' name={tripID} id={passenger}  onClick={removePassenger} ></button></div> 
+                return <div key={index}>{passenger}<img src={removeImg} className='removeImg myRides' name={tripID} id={passenger}  onClick={removePassenger} /></div> 
             }
-            return <div key={index}>{passenger}<button className='icon'></button></div>
+            return <div key={index}>{passenger}</div>
         })
     }
 

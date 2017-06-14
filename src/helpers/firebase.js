@@ -18,7 +18,11 @@ const dbHelper = {
     },
     subscribeToTripChanges : (cb)=>{
         return ref.child(`/trips`).on('value', cb)        
-    }
+    },
+    removeTrip : (id) =>{
+        return ref.child(`/trips/${id}`).remove()
+    } 
+
 }
 
 module.exports = dbHelper;

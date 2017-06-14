@@ -58,6 +58,15 @@ const reducer = (prevState,action) => {
         
     }
 
+    const removeTrip = (id) => {
+        let updatedTrips = [...prevState.trips]
+        //filter only the one trip where id matches from the array AKA remove the selected trip
+        updatedTrips = updatedTrips.filter((trip) => {
+            return trip.id != id
+        })
+        return updatedTrips
+    } 
+
     switch(action.type){
         case 'ADD_TRIP':
             return {
@@ -84,13 +93,17 @@ const reducer = (prevState,action) => {
                 ...prevState,
                 trips: removePassenger(action.passenger, action.id)
             }
-            break;
         case 'UPDATE_TRIP_FILTER':
             return {
                 ...prevState,
                 filter: action.filter
             }
-            break;
+        case 'REMOVE_TRIP':
+            console.log(`removing: `, action.id)
+            return {
+                ...prevState,
+                trips: removeTrip(action.id)
+            }
         default:
             return prevState;
     }

@@ -1,5 +1,6 @@
 import {connect} from 'react-redux'; 
 import MyDrives from './../components/MyDrives';
+import {removeTrip} from './../actions/actions';
 
 
 const mapStateToProps = (state) => {
@@ -9,4 +10,12 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,null)(MyDrives)
+const mapDispatchToProps = (dispatch) => {
+    return{
+        removeTrip:(id) => {
+            dispatch(removeTrip(id));
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(MyDrives)
