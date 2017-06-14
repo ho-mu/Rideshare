@@ -58,10 +58,16 @@ class FindRide extends Component {
         let tripComponents = this.getTripComponents();
 
         return (
+            <div>
             <div className="row">
                <div className="small-12 columns sg-content">
                     <label>Date:</label>
                     <input className="small-9 medium-4 large-3 xlarge-2 column" value={this.state.date} type='date' onChange={this.handleDateSelect} />
+                </div>
+            </div>    
+            <div className="row">
+               <div className="small-12 columns sg-content">
+                    <hr />
                     <table className='table'>
                         <thead>
                             <tr>
@@ -80,6 +86,7 @@ class FindRide extends Component {
                         </tbody>
                     </table>
                 </div>
+            </div>
             </div>
         )
     }

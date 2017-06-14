@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {filterTrips} from './../helpers/apiHelper';
 
-const MyRides = (props) => {
+const MyDrives = (props) => {
 
-    const getPassengerRides = () => {
+    const getDriverRides = () => {
         let filteredRides = filterTrips(
             props.trips, 
             {
                 username:props.username,
-                matchTo:'passenger'
+                matchTo:'driver'
             }
         )
 
@@ -37,7 +37,7 @@ const MyRides = (props) => {
         })
     }
 
-    let passengerRides = getPassengerRides();
+    let driverRides = getDriverRides();
 
     return (
         <div className="row">
@@ -47,8 +47,8 @@ const MyRides = (props) => {
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>Destination</th>
                             <th>Departure Time</th>
+                            <th>Destination</th>
                             <th>Driver</th>
                             <th>Max Seats</th>
                             <th>Passengers</th>
@@ -56,7 +56,7 @@ const MyRides = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {passengerRides}
+                        {driverRides}
                     </tbody>
                 </table>
             </div>
@@ -64,4 +64,4 @@ const MyRides = (props) => {
     )
 }
 
-export default MyRides;
+export default MyDrives;

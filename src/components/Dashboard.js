@@ -4,6 +4,7 @@ import HeaderContainer from './../containers/HeaderContainer';
 import FilterContainer from './../containers/FilterContainer';
 import FindRideContainer from './../containers/FindRideContainer';
 import MyRideContainer from './../containers/MyRideContainer';
+import MyDriveContainer from './../containers/MyDriveContainer';
 import OfferRideContainer from './../containers/OfferRideContainer';
 import { firebaseAuth } from '../config/constants'
 
@@ -15,6 +16,7 @@ const Dashboard = (props) => {
             <FilterContainer />
             <hr />
             <Route path='/rides/myrides' component={MyRideContainer} />
+            <Route path='/rides/mydrives' component={MyDriveContainer} />
             <Route path='/rides/findride' component={FindRideContainer} />
             <Route path='/rides/offerride' component={OfferRideContainer} />
         </div>
