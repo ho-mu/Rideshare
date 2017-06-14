@@ -1,10 +1,18 @@
 const database = require('./../helpers/firebase.js');
+let dateFormat = require('dateformat');
 
 const reducer = (prevState,action) => {
 
     if(prevState === undefined){
-         return {trips: [],
-         username: ''}
+         return {
+            trips: [],
+            username: '',
+            filter:{
+                date:dateFormat(new Date(), "yyyy-mm-dd"),
+                time:'6:00 AM',
+                destination:'Downtown'
+            }
+        }
 
     }
 
@@ -54,6 +62,12 @@ const reducer = (prevState,action) => {
             return {
                 ...prevState,
                 trips: action.trips
+            }
+            break;
+        case 'UPDATE_TRIP_FILTER':
+            return {
+                ...prevState,
+                filter: action.filter
             }
             break;
         default:

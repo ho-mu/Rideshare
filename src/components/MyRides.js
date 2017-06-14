@@ -54,7 +54,7 @@ const MyRides = (props) => {
 
     return (
         <div className="row">
-            <div class="small-12 columns sg-content">
+            <div className="small-12 columns sg-content">
                 <br/>
                 <h4>My driving rides</h4>
                 <table className='table'>

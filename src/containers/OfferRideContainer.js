@@ -1,12 +1,13 @@
 import {connect} from 'react-redux'; 
 import OfferRide from './../components/OfferRide';
-import {addTrip} from './../actions/actions';
+import {addTrip,updateTripFilter} from './../actions/actions';
 
 
 const mapStateToProps = (state) => {
     return {
         username:state.username,
-        trips:state.trips
+        trips:state.trips,
+        filter:state.filter
     }
 }
 

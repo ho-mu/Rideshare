@@ -29,4 +29,11 @@ const addUserToTrip = (username, id) => {
     }
 }
 
-export {setUser,addTrip,addUserToTrip,loadAllTrips}
+const updateTripFilter = (filter) => {
+    return {
+        type:'UPDATE_TRIP_FILTER',
+        filter
+    }
+}
+
+export {setUser,addTrip,addUserToTrip,loadAllTrips,updateTripFilter}
