@@ -45,7 +45,6 @@ export default class App extends Component {
 
       //load data on iniitial mount of app
          database.subscribeToTripChanges((trips)=>{
-           console.log("got some data")
             const newTrips = Object.keys(trips.val()).map((tripKey=>{
               const newTrip = {...trips.val()[tripKey]}
                 if (!newTrip.passengers)
