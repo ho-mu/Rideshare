@@ -89,40 +89,44 @@ export default class App extends Component {
       <BrowserRouter>
         <div id='app'>
           <div className='row'>
-          <nav>
-              <ul className="heading-nav bg-black padding-medium ghost">
-                <li className="heading-nav-entry active">
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="heading-nav-entry">
-                  <Link to="/rides/myrides">Dashboard</Link>
-                </li>
-                {this.state.authed
-                  ?
-                  <li className="heading-nav-entry">
-                    <button onClick={() => {logout()}}>Logout</button>
-                  </li>
-                  : <span>
+            <div>
+              <nav>
+                  <ul className="heading-nav bg-black padding-medium ghost">
+                    <li className="heading-nav-entry active">
+                      <Link to="/">Home</Link>
+                    </li>
+                    <li className="heading-nav-entry">
+                      <Link to="/rides/myrides">Dashboard</Link>
+                    </li>
+                    {this.state.authed
+                      ?
                       <li className="heading-nav-entry">
-                        <Link to="/login">Login</Link>
+                        <button onClick={() => {logout()}}>Logout</button>
                       </li>
-                      <li className="heading-nav-entry">
-                        <Link to="/register">Register</Link>
-                      </li>
-                    </span>}
-                    <li className="title">NM Rideshare</li>
-              </ul>
-          </nav>
+                      : <span>
+                          <li className="heading-nav-entry">
+                            <Link to="/login">Login</Link>
+                          </li>
+                          <li className="heading-nav-entry">
+                            <Link to="/register">Register</Link>
+                          </li>
+                        </span>}
+                        <li className="text-right title">NM Rideshare</li>
+                  </ul>
+              </nav>
+            </div>
           </div>
           <div className="container">
             <div className="row">
-              <Switch>
-                <Route path='/' exact component={Home} />
-                <PublicRoute authed={this.state.authed} path='/login' component={LoginContainer} />
-                <PublicRoute authed={this.state.authed} path='/register' component={RegisterContainer} />
-                <PrivateRoute authed={this.state.authed} path='/rides' component={Dashboard} />
-                <Route render={() => <h3>No Match</h3>} />
-              </Switch>
+              <div>
+                <Switch>
+                  <Route path='/' exact component={Home} />
+                  <PublicRoute authed={this.state.authed} path='/login' component={LoginContainer} />
+                  <PublicRoute authed={this.state.authed} path='/register' component={RegisterContainer} />
+                  <PrivateRoute authed={this.state.authed} path='/rides' component={Dashboard} />
+                  <Route render={() => <h3>No Match</h3>} />
+                </Switch>
+              </div>
             </div>
           </div>
         </div>

@@ -53,25 +53,27 @@ class FindRide extends Component {
         let tripComponents = this.getTripComponents(this.state.tripList);
 
         return (
-            <div>
-                <label>Date:</label>
-                <input type='date' onChange={this.filterTrips} />
-                <table className='table'>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Destination</th>
-                            <th>Departure Time</th>
-                            <th>Driver</th>
-                            <th>Available Seats</th>
-                            <th>Notes</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tripComponents}
-                    </tbody>
-                </table>
+            <div className="row">
+               <div className="small-12 columns sg-content">
+                    <label>Date:</label>
+                    <input className="small-9 medium-4 large-3 xlarge-2 column" type='date' onChange={this.filterTrips} />
+                    <table className='table'>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Destination</th>
+                                <th>Departure Time</th>
+                                <th>Driver</th>
+                                <th>Available Seats</th>
+                                <th>Notes</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tripComponents}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }
