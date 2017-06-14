@@ -26,13 +26,20 @@ const MyRides = (props) => {
             return (
                 <tr key={index}>
                     <td>{ride.date}</td>
-                    <td>{ride.destination}</td>
                     <td>{ride.time}</td>
+                    <td>{ride.destination}</td>
                     <td>{ride.driver}</td>
                     <td>{ride.maxSeats}</td>
+                    <td>{getPassengerTags(ride.passengers)}</td>
                     <td>{ride.notes}</td>
                 </tr>
             )
+        })
+    }
+
+    const getPassengerTags = (passengers) =>{
+        return passengers.map((passenger) => {
+            return <p>{passenger}</p>
         })
     }
 
@@ -41,15 +48,16 @@ const MyRides = (props) => {
 
     return (
         <div>
-            <h3>My driving rides</h3>
+            <h4>My driving rides</h4>
             <table className='table'>
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Destination</th>
                         <th>Departure Time</th>
+                        <th>Destination</th>
                         <th>Driver</th>
                         <th>Max Seats</th>
+                        <th>Passengers</th>
                         <th>Notes</th>
                     </tr>
                 </thead>
@@ -57,7 +65,7 @@ const MyRides = (props) => {
                     {driverRides}
                 </tbody>
             </table>
-            <h3>My passenger rides</h3>
+            <h4>My passenger rides</h4>
             <table className='table'>
                 <thead>
                     <tr>
@@ -66,6 +74,7 @@ const MyRides = (props) => {
                         <th>Departure Time</th>
                         <th>Driver</th>
                         <th>Max Seats</th>
+                        <th>Passengers</th>
                         <th>Notes</th>
                     </tr>
                 </thead>

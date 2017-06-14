@@ -91,12 +91,6 @@ export default class App extends Component {
           <div className='row'>
           <nav>
               <ul className="heading-nav bg-black padding-medium ghost">
-                <li className="heading-nav-entry active">
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="heading-nav-entry">
-                  <Link to="/rides/myrides">Dashboard</Link>
-                </li>
                 {this.state.authed
                   ?
                   <li className="heading-nav-entry">
@@ -117,7 +111,7 @@ export default class App extends Component {
           <div className="container">
             <div className="row">
               <Switch>
-                <Route path='/' exact component={Home} />
+                <PrivateRoute path='/' exact component={Dashboard} />
                 <PublicRoute authed={this.state.authed} path='/login' component={LoginContainer} />
                 <PublicRoute authed={this.state.authed} path='/register' component={RegisterContainer} />
                 <PrivateRoute authed={this.state.authed} path='/rides' component={Dashboard} />

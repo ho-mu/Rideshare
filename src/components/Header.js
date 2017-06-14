@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 class Header extends Component {
 
     state = {
-        activeTab:''
+        activeTab:'myrides'
     }
 
     handleClick = (event) => {

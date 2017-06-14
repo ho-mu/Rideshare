@@ -22,3 +22,21 @@ nav{
 li{
     list-style: none;
 }
+.heading-nav{
+    background-color: #002B49;
+   
+}
+h4{
+    margin-top: 2.5%;
+    margin-left: 1%;
+}
+button{
+    background-color: #002b49;
+    border-color: #002b49;
+    margin-left: 2%
+}
+button:hover{
+    background-color:#002b49;
+    border-color:#002b49;
+    margin-left: 2%;
+}

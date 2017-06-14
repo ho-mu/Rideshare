@@ -1,29 +1,27 @@
 import React, {Component} from 'react';
 const database = require('./../helpers/firebase.js');
+let dateFormat = require('dateformat');
 
 class FindRide extends Component {
 
     state = {
-        date:'',
-        tripList:[]
+        date:dateFormat(new Date(), "yyyy-mm-dd")
     }
 
-    filterTrips = (event) => {
+    handleDateSelect = (event) => {
         let dateFilter = event.target.value;
-
-        let filteredTrips = this.props.trips.filter((trip,index) => {
-            console.log(trip.date, dateFilter);
-            if(trip.date === dateFilter) return true;
-            else return false;
-        })
-
         this.setState({
-            date:dateFilter,
-            tripList:filteredTrips
+            date:dateFilter
         });
     }
 
-    getTripComponents = (filteredTrips) => {
+
+
+    getTripComponents = () => {
+        let filteredTrips = this.props.trips.filter((trip) => {
+            return trip.date === this.state.date
+        })
+
         return filteredTrips.map((trip,index) => {
             let openSeats = trip.maxSeats - trip.passengers.length;
             let disabledStatus = 
@@ -33,14 +31,21 @@ class FindRide extends Component {
             return (
                 <tr key={index}>
                     <td>{trip.date}</td>
-                    <td>{trip.destination}</td>
                     <td>{trip.time}</td>
+                    <td>{trip.destination}</td>
                     <td>{trip.driver}</td>
                     <td>{openSeats}</td>
+                    <td>{this.getPassengerTags(trip.passengers)}</td>
                     <td>{trip.notes}</td>
                     <td><button name={trip.id} disabled={disabledStatus} onClick={this.handleBooking}>Book Ride</button></td>
                 </tr>
             )
+        })
+    }
+
+    getPassengerTags = (passengers) =>{
+        return passengers.map((passenger) => {
+            return <p>{passenger}</p>
         })
     }
 
@@ -50,12 +55,14 @@ class FindRide extends Component {
     }
 
     render(){
-        let tripComponents = this.getTripComponents(this.state.tripList);
+        console.log(`trips: `, this.props.trips)
+        console.log(`date: `, this.state.date)
+        let tripComponents = this.getTripComponents();
 
         return (
             <div>
                 <label>Date:</label>
-                <input type='date' onChange={this.filterTrips} />
+                <input type='date' value={this.state.date}onChange={this.handleDateSelect} />
                 <table className='table'>
                     <thead>
                         <tr>
@@ -64,6 +71,7 @@ class FindRide extends Component {
                             <th>Departure Time</th>
                             <th>Driver</th>
                             <th>Available Seats</th>
+                            <th>Passengers</th>
                             <th>Notes</th>
                             <th></th>
                         </tr>

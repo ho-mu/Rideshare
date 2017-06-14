@@ -46,6 +46,16 @@ class OfferRide extends Component {
             notes:this.state.notes,
             id
         })
+
+        this.setState(
+            {
+                date:dateFormat(new Date(), "yyyy/mm/dd"),
+                time:'6:00 AM',
+                destination:'Downtown',
+                maxSeats:1,
+                notes:''
+            }
+        )
     }
 
     render(){
@@ -54,7 +64,7 @@ class OfferRide extends Component {
                 <div className="row">
                     <div className="small-12 columns">
                         <label>Date</label>
-                        <input type='date' name='date' onChange={this.handleChange}/>
+                        <input type='date' value={this.state.date} name='date' onChange={this.handleChange}/>
                     </div>
                 </div>
                 <form id='offer_form' onSubmit={this.handleSubmit}>
@@ -62,14 +72,14 @@ class OfferRide extends Component {
                     <div className="row">
                         <div className="small-4 columns">
                             <label>Destination</label>
-                            <select name='destination' onChange={this.handleChange}>
+                            <select name='destination' value={this.state.destination} onChange={this.handleChange}>
                                 <option value='Downtown'>Downtown</option>
                                 <option value='Franklin'>Franklin</option>
                             </select>
                         </div>
                         <div className="small-4 columns">
                             <label>Departure Time</label>
-                            <select name='time' onChange={this.handleChange}>
+                            <select name='time' value={this.state.time} onChange={this.handleChange}>
                                 <option value='6:00 AM'>6:00 AM</option>
                                 <option value='6:30 AM'>6:30 AM</option>
                                 <option value='7:00 AM'>7:00 AM</option>
@@ -99,7 +109,7 @@ class OfferRide extends Component {
                         </div>
                         <div className="small-4 columns">
                             <label>Open Seats</label>
-                            <select name='maxSeats' onChange={this.handleChange}>
+                            <select name='maxSeats' value={this.state.maxSeats} onChange={this.handleChange}>
                                 <option value='1'>1</option>
                                 <option value='2'>2</option>
                                 <option value='3'>3</option>
@@ -114,7 +124,7 @@ class OfferRide extends Component {
                     </div>
                     <div className="row">
                         <div className="large-6 columns">
-                            <textarea name='notes' onChange={this.handleChange} placeholder='Add notes here...'></textarea>
+                            <textarea name='notes' onChange={this.handleChange} value={this.state.notes} placeholder='Add notes here...'></textarea>
                         </div>
                     </div>
                     <button>Submit</button>
