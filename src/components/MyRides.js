@@ -1,22 +1,28 @@
 import React, {Component} from 'react';
+import {filterTrips} from './../helpers/apiHelper';
 
 const MyRides = (props) => {
 
     const getDriverRides = () => {
-        let filteredRides = props.trips.filter((ride,index) => {
-            return (ride.driver === props.username)
-        })
+        let filteredRides = filterTrips(
+            props.trips, 
+            {
+                username:props.username,
+                matchTo:'driver'
+            }
+        )
 
         return getTableRows(filteredRides);
     }
 
     const getPassengerRides = () => {
-        let filteredRides = props.trips.filter((ride,index) => {
-            for(let i=0; i<ride.passengers.length; i++){
-                if(props.username === ride.passengers[i]) return true;
+        let filteredRides = filterTrips(
+            props.trips, 
+            {
+                username:props.username,
+                matchTo:'passenger'
             }
-            return false;
-        })
+        )
 
         return getTableRows(filteredRides);
     }

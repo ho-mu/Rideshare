@@ -22,18 +22,27 @@ class Header extends Component {
                     </div>
                 </div>
                 <ul id='dashboardHeader' className='filter-nav row'>
-                    <li className={this.state.activeTab === 'myrides'? 
-                            "filter-nav-entry active small-4 columns":
-                            "filter-nav-entry small-4 columns"}
-                        ><Link to='/rides/myrides'><button name='myrides' onClick={this.handleClick}>My Rides</button></Link></li>        
-                    <li className={this.state.activeTab === 'findride'? 
-                            "filter-nav-entry active small-4 columns":
-                            "filter-nav-entry small-4 columns"}
-                        ><Link to='/rides/findride'><button name='findride' onClick={this.handleClick}>Find a Ride</button></Link></li>
-                    <li className={this.state.activeTab === 'offerride'? 
-                            "filter-nav-entry active small-4 columns":
-                            "filter-nav-entry small-4 columns"}
-                        ><Link to='/rides/offerride'><button name='offerride' onClick={this.handleClick}>Offer a Ride</button></Link></li>
+                    <li className='small-4 columns'><Link to='/rides/myrides'
+                            className={this.state.activeTab === 'myrides'? 
+                                "filter-nav-entry active":
+                                "filter-nav-entry"}
+                            name='myrides'
+                            onClick={this.handleClick}
+                        ><button>My Rides</button></Link></li>        
+                    <li className='small-4 columns'><Link to='/rides/findride'
+                            className={this.state.activeTab === 'findride'? 
+                                "filter-nav-entry active":
+                                "filter-nav-entry"}
+                            onClick={this.handleClick}
+                            name='findride'
+                        ><button>Find a Ride</button></Link></li>
+                    <li className='small-4 columns'><Link to='/rides/offerride'
+                            className={this.state.activeTab === 'offerride'? 
+                                "filter-nav-entry active":
+                                "filter-nav-entry"}
+                            onClick={this.handleClick}
+                            name='offerride'
+                        ><button>Offer a Ride</button></Link></li>
                 </ul>
             </div>
         )

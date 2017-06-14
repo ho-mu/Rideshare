@@ -21,7 +21,15 @@ nav{
 
 li{
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
+li button {
+    padding: 0;
+    margin: 0;
+}
+
 .heading-nav{
     background-color: #002B49;
    
