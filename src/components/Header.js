@@ -22,27 +22,34 @@ class Header extends Component {
                     </div>
                 </div>
                 <ul id='dashboardHeader' className='filter-nav row'>
-                    <li className='small-4 columns'><Link to='/rides/myrides'
+                    <li className='small-3 columns'><Link to='/rides/myrides'
                             className={this.state.activeTab === 'myrides'? 
                                 "filter-nav-entry active":
                                 "filter-nav-entry"}
                             name='myrides'
                             onClick={this.handleClick}
                         ><button>My Rides</button></Link></li>        
-                    <li className='small-4 columns'><Link to='/rides/findride'
+                    <li className='small-3 columns'><Link to='/rides/mydrives'
+                            className={this.state.activeTab === 'mydrives'? 
+                                "filter-nav-entry active":
+                                "filter-nav-entry"}
+                            name='mydrives'
+                            onClick={this.handleClick}
+                        ><button>My Drives</button></Link></li>        
+                    <li className='small-3 columns'><Link to='/rides/findride'
                             className={this.state.activeTab === 'findride'? 
                                 "filter-nav-entry active":
                                 "filter-nav-entry"}
                             onClick={this.handleClick}
                             name='findride'
                         ><button>Find a Ride</button></Link></li>
-                    <li className='small-4 columns'><Link to='/rides/offerride'
+                    <li className='small-3 columns'><Link to='/rides/offerride'
                             className={this.state.activeTab === 'offerride'? 
                                 "filter-nav-entry active":
                                 "filter-nav-entry"}
                             onClick={this.handleClick}
                             name='offerride'
-                        ><button>Offer a Ride</button></Link></li>
+                        ><button>Offer to Drive</button></Link></li>
                 </ul>
             </div>
         )
