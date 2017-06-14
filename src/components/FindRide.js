@@ -55,15 +55,13 @@ class FindRide extends Component {
     }
 
     render(){
-        console.log(`trips: `, this.props.trips)
-        console.log(`date: `, this.state.date)
         let tripComponents = this.getTripComponents();
 
         return (
             <div className="row">
                <div className="small-12 columns sg-content">
                     <label>Date:</label>
-                    <input className="small-9 medium-4 large-3 xlarge-2 column" value={this.state.date} type='date' onChange={this.filterTrips} />
+                    <input className="small-9 medium-4 large-3 xlarge-2 column" value={this.state.date} type='date' onChange={this.handleDateSelect} />
                     <table className='table'>
                         <thead>
                             <tr>
