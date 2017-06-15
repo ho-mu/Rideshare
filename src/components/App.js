@@ -91,7 +91,7 @@ export default class App extends Component {
             <nav>
               <ul className="heading-nav bg-black padding-medium ghost">
                 <li className="heading-nav-entry">
-                  <img style={{"height" : "50px", "marginRight" : "50px"}} src={logo} alt="logo"/>
+                  <img style={{"height" : "50px", "marginRight" : "15px"}} src={logo} alt="logo"/>
                 </li>
                 {this.state.authed
                   ?
@@ -106,7 +106,7 @@ export default class App extends Component {
                         <Link to="/register">Register</Link>
                       </li>
                     </span>}
-                  <li className="text-right title">NM Rideshare</li>
+                  <li className="heading-nav-entry title">NM Rideshare</li>
               </ul>
             </nav>
           </div>

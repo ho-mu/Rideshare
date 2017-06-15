@@ -11,9 +11,9 @@
     font-weight: bold;
     list-style-type: none;
     font-size: 175%;
-    margin-right: 10px;
-    margin-top: 15px;
+    margin-right: 2%;
     float: right;
+    line-height: 175%;
 }
 nav{
     margin: 5% 0%;
