@@ -9,7 +9,8 @@ class OfferRide extends Component {
 
     state = {
         maxSeats:1,
-        notes:''
+        notes:'',
+        submitMsg: ''
     }
 
     handleChange = (event) => {
@@ -46,7 +47,8 @@ class OfferRide extends Component {
 
         this.setState({
             maxSeats:1,
-            notes:''
+            notes:'',
+            submitMsg: 'Submit was Successful'
         })
     }
 
@@ -76,6 +78,13 @@ class OfferRide extends Component {
                     <div className="row">
                         <div className="small-2 small-centered columns">
                             <button className="expand">Submit</button>
+                            {
+                                (this.state.submitMsg) ? 
+                                    <div data-notification="" className="notification-box success">
+                                        {this.state.submitMsg}
+                                        <a href="/rides/offerride" className="close">&#xD7;</a>
+                                    </div> : null
+                            }
                         </div>
                     </div>
                     <hr />
