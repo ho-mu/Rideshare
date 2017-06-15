@@ -10,13 +10,20 @@ class OfferRide extends Component {
     state = {
         maxSeats:1,
         notes:'',
-        submitMsg: ''
+        submitMsg:null
+    }
+
+    closeSubmit = (event) => {
+        this.setState({
+            submitMsg:null
+        })
     }
 
     handleChange = (event) => {
         const { name,value } = event.target;
         this.setState({
-            [name]:value
+            [name]:value,
+            submitMsg:null
         })
     }
     
@@ -79,13 +86,13 @@ class OfferRide extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="small-2 small-centered columns">
+                        <div className="small-4 small-centered columns">
                             <button className="expand">Submit</button>
                             {
                                 (this.state.submitMsg) ? 
                                     <div data-notification="" className="notification-box success">
                                         {this.state.submitMsg}
-                                        <a href="/rides/offerride" className="close">&#xD7;</a>
+                                        <a onClick={this.closeSubmit} className="close">&#xD7;</a>
                                     </div> : null
                             }
                         </div>

@@ -13,7 +13,7 @@ const filterTrips = (trips,parameters) => {
         }
 
         if(parameters.time != undefined){
-            if(trip.time < parameters.time) return false;
+            if((new Date('1970/01/01 ' + trip.time)) < (new Date('1970/01/01 ' + parameters.time))) return false;
         }
 
         if(parameters.destination != undefined){
@@ -33,6 +33,19 @@ const filterTrips = (trips,parameters) => {
         }
 
         return true;
+    })
+
+    filteredTrips.sort((a,b) => {
+        let aDate = new Date(a.date + ' ' + a.time);
+        let bDate = new Date(b.date + ' ' + b.time);
+
+        if(aDate < bDate){
+            return -1;
+        }else if(aDate > bDate){
+            return 1;
+        }else{
+            return 0;
+        }
     })
 
     return filteredTrips;

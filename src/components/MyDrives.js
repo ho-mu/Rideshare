@@ -43,7 +43,6 @@ const MyDrives = (props) => {
             {
                 date:props.filter.date,
                 time:props.filter.time,
-                destination:props.filter.destination,
                 username:props.username,
                 matchTo:'driver'
             }
