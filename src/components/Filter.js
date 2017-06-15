@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {filterTrips} from './../helpers/apiHelper';
+let dateFormat = require('dateformat');
 
 const Filter = (props) => {
 
@@ -16,7 +17,7 @@ const Filter = (props) => {
             <div className="row">
                 <div className="small-4 columns">
                     <label>Date</label>
-                    <input type='date' value={props.filter.date} name='date' onChange={handleChange}/>
+                    <input type='date' min={dateFormat(new Date(), "yyyy-mm-dd")} value={props.filter.date} name='date' onChange={handleChange}/>
                 </div>
                 <div className="small-4 columns">
                     <label>Departure Time</label>

@@ -44,7 +44,7 @@ class FindRide extends Component {
     }
 
     getPassengerTags = (passengers) =>{
-        return passengers.map((passenger) => {
+        return passengers.map((passenger) => {  
             return <p>{passenger}</p>
         })
     }
@@ -60,7 +60,7 @@ class FindRide extends Component {
         return (
             <div>
             <div className="row">
-               <div className="small-12 columns sg-content">
+               <div className="small-12 columns sg-content">  
                     <label>Date:</label>
                     <input className="small-9 medium-4 large-3 xlarge-2 column" value={this.state.date} type='date' onChange={this.handleDateSelect} />
                 </div>
