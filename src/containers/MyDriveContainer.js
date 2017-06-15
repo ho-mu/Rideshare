@@ -5,7 +5,8 @@ import MyDrives from './../components/MyDrives';
 const mapStateToProps = (state) => {
     return {
         trips:state.trips,
-        username:state.username
+        username:state.username,
+        filter:state.filter
     }
 }
 

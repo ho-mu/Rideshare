@@ -50,7 +50,7 @@ const reducer = (prevState,action) => {
 
         let newPassengers = [...targetTrip.passengers]
         let index = newPassengers.indexOf(passenger)
-        newPassengers.splice(index)
+        newPassengers.splice(index,1)
 
         targetTrip.passengers = newPassengers
 
@@ -84,13 +84,11 @@ const reducer = (prevState,action) => {
                 ...prevState,
                 trips: removePassenger(action.passenger, action.id)
             }
-            break;
         case 'UPDATE_TRIP_FILTER':
             return {
                 ...prevState,
                 filter: action.filter
             }
-            break;
         default:
             return prevState;
     }

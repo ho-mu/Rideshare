@@ -1,33 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 const database = require('./../helpers/firebase.js');
-let dateFormat = require('dateformat');
+import {filterTrips} from './../helpers/apiHelper';
 
-class FindRide extends Component {
+const FindRide = (props) => {
 
-    state = {
-        date:dateFormat(new Date(), "yyyy-mm-dd")
-    }
-
-    handleDateSelect = (event) => {
-        let dateFilter = event.target.value;
-        this.setState({
-            date:dateFilter
-        });
-    }
-
-
-
-    getTripComponents = () => {
-        let filteredTrips = this.props.trips.filter((trip) => {
-            return trip.date === this.state.date
-        })
-
+    const getTripComponents = (filteredTrips) => {
         return filteredTrips.map((trip,index) => {
             let openSeats = trip.maxSeats - trip.passengers.length;
             let disabledStatus = 
                 (openSeats === 0? true:false) ||
-                (trip.driver === this.props.username) ||
-                (trip.passengers.indexOf(this.props.username) >= 0)
+                (trip.driver === props.username) ||
+                (trip.passengers.indexOf(props.username) >= 0)
             return (
                 <tr key={index}>
                     <td>{trip.date}</td>
@@ -35,36 +18,38 @@ class FindRide extends Component {
                     <td>{trip.destination}</td>
                     <td>{trip.driver}</td>
                     <td>{openSeats}</td>
-                    <td>{this.getPassengerTags(trip.passengers)}</td>
+                    <td>{getPassengerTags(trip.passengers)}</td>
                     <td>{trip.notes}</td>
-                    <td><button name={trip.id} disabled={disabledStatus} onClick={this.handleBooking}>Book Ride</button></td>
+                    <td><button name={trip.id} disabled={disabledStatus} onClick={handleBooking}>Book Ride</button></td>
                 </tr>
             )
         })
     }
 
-    getPassengerTags = (passengers) =>{
-        return passengers.map((passenger) => {
-            return <p>{passenger}</p>
+    const getPassengerTags = (passengers) =>{
+        return passengers.map((passenger, index) => {
+            return <p key={index}>{passenger}</p>
         })
     }
 
-    handleBooking = (event) => {
-        this.props.addUserToTrip(this.props.username, event.target.name)
-        database.updateTrip(this.props.trips.find((trip)=>trip.id==event.target.name))
+    const handleBooking = (event) => {
+        props.addUserToTrip(props.username, event.target.name)
+        database.updateTrip(props.trips.find((trip)=>trip.id==event.target.name))
     }
 
-    render(){
-        let tripComponents = this.getTripComponents();
+    let tripComponents = getTripComponents(
+        filterTrips(
+            props.trips,
+            {
+                date:props.filter.date,
+                time:props.filter.time,
+                destination:props.filter.destination
+            }
+        )
+    )
 
-        return (
-            <div>
-            <div className="row">
-               <div className="small-12 columns sg-content">
-                    <label>Date:</label>
-                    <input className="small-9 medium-4 large-3 xlarge-2 column" value={this.state.date} type='date' onChange={this.handleDateSelect} />
-                </div>
-            </div>    
+    return (
+        <div>  
             <div className="row">
                <div className="small-12 columns sg-content">
                     <hr />
@@ -87,9 +72,8 @@ class FindRide extends Component {
                     </table>
                 </div>
             </div>
-            </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default FindRide;
