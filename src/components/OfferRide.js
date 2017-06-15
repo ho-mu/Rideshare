@@ -86,17 +86,23 @@ class OfferRide extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="small-4 small-centered columns">
+                        <div className="small-4 large-2 small-centered columns">
                             <button className="expand">Submit</button>
-                            {
-                                (this.state.submitMsg) ? 
-                                    <div data-notification="" className="notification-box success">
-                                        {this.state.submitMsg}
-                                        <a onClick={this.closeSubmit} className="close">&#xD7;</a>
-                                    </div> : null
-                            }
                         </div>
                     </div>
+
+                    {
+                        (this.state.submitMsg) ?
+                    <div className="row">
+                        <div className="small-6 medium-4 large-3 small-centered columns"> 
+                            <div data-notification="" className="notification-box success">
+                                {this.state.submitMsg}
+                                <a onClick={this.closeSubmit} className="close">&#xD7;</a>
+                            </div>
+                        </div>
+                    </div> : null
+                    }
+
                     <hr />
                 </form>
             </div>
