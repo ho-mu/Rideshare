@@ -21,8 +21,8 @@ class OfferRide extends Component {
     
     handleSubmit = (event) => {
         event.preventDefault();
-        let idList = Object.keys(this.props.trips).map((key) => {
-            return Number(key);
+        let idList = this.props.trips.map((trip) => {
+            return Number(trip.id);
         })
         let id = Math.max(...idList) + 1;
         this.props.addTrip({
