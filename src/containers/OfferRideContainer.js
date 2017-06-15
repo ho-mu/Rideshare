@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'; 
 import OfferRide from './../components/OfferRide';
-import {addTrip,updateTripFilter} from './../actions/actions';
+import {addTrip} from './../actions/actions';
 
 
 const mapStateToProps = (state) => {

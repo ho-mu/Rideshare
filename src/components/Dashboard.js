@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Route} from 'react-router-dom';
 import HeaderContainer from './../containers/HeaderContainer';
 import FilterContainer from './../containers/FilterContainer';
@@ -6,7 +6,6 @@ import FindRideContainer from './../containers/FindRideContainer';
 import MyRideContainer from './../containers/MyRideContainer';
 import MyDriveContainer from './../containers/MyDriveContainer';
 import OfferRideContainer from './../containers/OfferRideContainer';
-import { firebaseAuth } from '../config/constants'
 
 const Dashboard = (props) => {
     return (

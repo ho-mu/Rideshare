@@ -1,4 +1,3 @@
-const database = require('./../helpers/firebase.js');
 let dateFormat = require('dateformat');
 
 const reducer = (prevState,action) => {
@@ -31,9 +30,8 @@ const reducer = (prevState,action) => {
         let updatedTrips = [...prevState.trips];
         
         let targetTrip = updatedTrips.find((trip)=>{
-            return trip.id==id
+            return Number(trip.id)===Number(id)
         })
-        console.log("target trip", targetTrip)
         let newPassengers = [...targetTrip.passengers]
         
         newPassengers.push(username);
@@ -45,7 +43,7 @@ const reducer = (prevState,action) => {
         let updatedTrips = [...prevState.trips]
 
         let targetTrip = updatedTrips.find((trip) => {
-            return trip.id==id
+            return Number(trip.id)===Number(id)
         })
 
         let newPassengers = [...targetTrip.passengers]
@@ -62,7 +60,7 @@ const reducer = (prevState,action) => {
         let updatedTrips = [...prevState.trips]
         //filter only the one trip where id matches from the array AKA remove the selected trip
         updatedTrips = updatedTrips.filter((trip) => {
-            return trip.id != id
+            return Number(trip.id) !== Number(id)
         })
         return updatedTrips
     } 
@@ -99,7 +97,6 @@ const reducer = (prevState,action) => {
                 filter: action.filter
             }
         case 'REMOVE_TRIP':
-            console.log(`removing: `, action.id)
             return {
                 ...prevState,
                 trips: removeTrip(action.id)

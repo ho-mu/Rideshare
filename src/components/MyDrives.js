@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {filterTrips} from './../helpers/apiHelper';
 const database = require('./../helpers/firebase.js');
 const removeImg = require('./../images/remove_img.png');
@@ -12,6 +12,12 @@ const MyDrives = (props) => {
         props.removeTrip(event.target.name)
         //remove trip from DB
         database.removeTrip(event.target.name)
+    }
+
+    const getPassengerTags = (passengers) =>{
+        return passengers.map((passenger,index) => {
+            return <p key={index}>{passenger}</p>
+        })
     }
 
     const getTableRows = (rides) => {
@@ -29,12 +35,6 @@ const MyDrives = (props) => {
                     <td><img src={removeImg} className='removeImg myDrives' alt='remove_img' name={ride.id}  onClick={removeTrip} /></td>
                 </tr>
             )
-        })
-    }
-
-    const getPassengerTags = (passengers) =>{
-        return passengers.map((passenger,index) => {
-            return <p key={index}>{passenger}</p>
         })
     }
 
