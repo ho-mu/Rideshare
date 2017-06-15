@@ -1,6 +1,4 @@
-import React, {Component} from 'react';
-import {filterTrips} from './../helpers/apiHelper';
-let dateFormat = require('dateformat');
+import React from 'react';
 
 const Filter = (props) => {
 

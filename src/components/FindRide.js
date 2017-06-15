@@ -4,6 +4,17 @@ import {filterTrips} from './../helpers/apiHelper';
 
 const FindRide = (props) => {
 
+    const getPassengerTags = (passengers) =>{
+        return passengers.map((passenger, index) => {
+            return <p key={index}>{passenger}</p>
+        })
+    }
+
+    const handleBooking = (event) => {
+        props.addUserToTrip(props.username, event.target.name)
+        database.updateTrip(props.trips.find((trip)=>Number(trip.id)===Number(event.target.name)))
+    }
+
     const getTripComponents = (filteredTrips) => {
         return filteredTrips.map((trip,index) => {
             let openSeats = trip.maxSeats - trip.passengers.length;
@@ -24,17 +35,6 @@ const FindRide = (props) => {
                 </tr>
             )
         })
-    }
-
-    const getPassengerTags = (passengers) =>{
-        return passengers.map((passenger, index) => {
-            return <p key={index}>{passenger}</p>
-        })
-    }
-
-    const handleBooking = (event) => {
-        props.addUserToTrip(props.username, event.target.name)
-        database.updateTrip(props.trips.find((trip)=>trip.id==event.target.name))
     }
 
     let tripComponents = getTripComponents(
