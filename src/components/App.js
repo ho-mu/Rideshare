@@ -84,7 +84,7 @@ export default class App extends Component {
 
 
   render() {
-    return this.state.loading === true ? <span class="loading-indicator small"></span> : (
+    return this.state.loading === true ? <span className="loading-indicator small"></span> : (
       <BrowserRouter>
         <div id='app'>
           <div className='row'>
