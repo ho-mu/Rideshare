@@ -10,12 +10,14 @@ class OfferRide extends Component {
     state = {
         maxSeats:1,
         notes:'',
-        submitMsg:null
+        submitMsg:null,
+        prevDateMsg: null
     }
 
     closeSubmit = (event) => {
         this.setState({
-            submitMsg:null
+            submitMsg:null,
+            prevDateMsg: null
         })
     }
 
@@ -23,43 +25,56 @@ class OfferRide extends Component {
         const { name,value } = event.target;
         this.setState({
             [name]:value,
-            submitMsg:null
+            submitMsg:null,
+            prevDateMsg: null
         })
     }
     
     handleSubmit = (event) => {
         event.preventDefault();
+
+        let today=dateFormat(new Date(), "yyyy-mm-dd");
         let idList = this.props.trips.map((trip) => {
             return Number(trip.id);
         })
-        let id = Math.max(...idList) + 1;
-        this.props.addTrip({
-            date:this.props.filter.date,
-            time:this.props.filter.time,
-            driver:this.props.username,
-            destination:this.props.filter.destination,
-            maxSeats:this.state.maxSeats,
-            passengers:[],
-            notes:this.state.notes,
-            id
-        })
+        if( this.props.filter.date < today){
+            const { name, value } = event.target
+            this.setState({
+                [name]:value,
+                submitMsg:null,
+                prevDateMsg: true
+            })
+        }else{
+            let id = Math.max(...idList) + 1;
+            this.props.addTrip({
+                date:this.props.filter.date,
+                time:this.props.filter.time,
+                driver:this.props.username,
+                destination:this.props.filter.destination,
+                maxSeats:this.state.maxSeats,
+                passengers:[],
+                notes:this.state.notes,
+                id
+            })
 
-        database.addNewTrip({
-            date:this.props.filter.date,
-            time:this.props.filter.time,
-            driver:this.props.username,
-            destination:this.props.filter.destination,
-            maxSeats:this.state.maxSeats,
-            passengers:[],
-            notes:this.state.notes,
-            id
-        })
+            database.addNewTrip({
+                date:this.props.filter.date,
+                time:this.props.filter.time,
+                driver:this.props.username,
+                destination:this.props.filter.destination,
+                maxSeats:this.state.maxSeats,
+                passengers:[],
+                notes:this.state.notes,
+                id
+            })
 
-        this.setState({
-            maxSeats:1,
-            notes:'',
-            submitMsg: 'Submit was Successful'
-        })
+            this.setState({
+                maxSeats:1,
+                notes:'',
+                submitMsg: 'Submit was Successful',
+                prevDateMsg: null
+            })
+        }
     }
 
     render(){
@@ -86,17 +101,30 @@ class OfferRide extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="small-4 small-centered columns">
+                        <div className="small-4 large-2 small-centered columns">
                             <button className="expand">Submit</button>
                             {
-                                (this.state.submitMsg) ? 
-                                    <div data-notification="" className="notification-box success">
-                                        {this.state.submitMsg}
+                                (this.state.prevDateMsg) ?
+                                    <div data-notification="" className="notification-box alert">
+                                        Please select today or a future date.
                                         <a onClick={this.closeSubmit} className="close">&#xD7;</a>
                                     </div> : null
                             }
                         </div>
                     </div>
+
+                    {
+                        (this.state.submitMsg) ?
+                    <div className="row">
+                        <div className="small-6 medium-4 large-3 small-centered columns"> 
+                            <div data-notification="" className="notification-box success">
+                                {this.state.submitMsg}
+                                <a onClick={this.closeSubmit} className="close">&#xD7;</a>
+                            </div>
+                        </div>
+                    </div> : null
+                    }
+
                     <hr />
                 </form>
             </div>
