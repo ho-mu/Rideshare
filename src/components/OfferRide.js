@@ -110,13 +110,6 @@ class OfferRide extends Component {
                                         <a onClick={this.closeSubmit} className="close">&#xD7;</a>
                                     </div> : null
                             }
-                            {
-                                (this.state.submitMsg) ? 
-                                    <div data-notification="" className="notification-box success">
-                                        {this.state.submitMsg}
-                                        <a onClick={this.closeSubmit} className="close">&#xD7;</a>
-                                    </div> : null
-                            }
                         </div>
                     </div>
 
