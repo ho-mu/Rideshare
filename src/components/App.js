@@ -8,6 +8,7 @@ import { logout } from '../helpers/auth'
 import { firebaseAuth } from '../config/constants'
 import './../styles/styles.css'
 const database = require('./../helpers/firebase.js');
+const logo = require('./../../public/logo.png')
 
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
@@ -90,6 +91,9 @@ export default class App extends Component {
           <div className='row'>
             <nav>
               <ul className="heading-nav bg-black padding-medium ghost">
+                <li className="heading-nav-entry">
+                  <img style={{"height" : "50px", "marginRight" : "50px"}} src={logo} alt="logo"/>
+                </li>
                 {this.state.authed
                   ?
                   <li className="heading-nav-entry">
