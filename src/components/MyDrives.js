@@ -5,18 +5,6 @@ const removeImg = require('./../images/remove_img.png');
 
 const MyDrives = (props) => {
 
-    const getDriverRides = () => {
-        let filteredRides = filterTrips(
-            props.trips, 
-            {
-                username:props.username,
-                matchTo:'driver'
-            }
-        )
-
-        return getTableRows(filteredRides);
-    }
-
     const removeTrip = (event) => {
         console.log(`in remove trip`, event.target.name)
         //remove trip from state
@@ -44,12 +32,23 @@ const MyDrives = (props) => {
     }
 
     const getPassengerTags = (passengers) =>{
-        return passengers.map((passenger) => {
-            return <p>{passenger}</p>
+        return passengers.map((passenger,index) => {
+            return <p key={index}>{passenger}</p>
         })
     }
 
-    let driverRides = getDriverRides();
+    let myDrives = getTableRows(
+        filterTrips(
+            props.trips, 
+            {
+                date:props.filter.date,
+                time:props.filter.time,
+                destination:props.filter.destination,
+                username:props.username,
+                matchTo:'driver'
+            }
+        )
+    );
 
     return (
         <div className="row">
@@ -69,7 +68,7 @@ const MyDrives = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {driverRides}
+                        {myDrives}
                     </tbody>
                 </table>
             </div>

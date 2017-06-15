@@ -5,29 +5,17 @@ const removeImg = require('./../images/remove_img.png');
 
 const MyRides = (props) => {
 
-    const getPassengerRides = () => {
-        let filteredRides = filterTrips(
-            props.trips, 
-            {
-                username:props.username,
-                matchTo:'passenger'
-            }
-        )
-
-        return getTableRows(filteredRides);
-    }
-
-    const getTableRows = (rides) => {
-        return rides.map((ride,index) => {
+    const getTableRows = (trips) => {
+        return trips.map((trip,index) => {
             return (
                 <tr key={index}>
-                    <td>{ride.date}</td>
-                    <td>{ride.time}</td>
-                    <td>{ride.destination}</td>
-                    <td>{ride.driver}</td>
-                    <td>{ride.maxSeats}</td>
-                    <td>{getPassengerTags(ride.passengers, ride.id)}</td>
-                    <td>{ride.notes}</td>
+                    <td>{trip.date}</td>
+                    <td>{trip.time}</td>
+                    <td>{trip.destination}</td>
+                    <td>{trip.driver}</td>
+                    <td>{trip.maxSeats}</td>
+                    <td>{getPassengerTags(trip.passengers, trip.id)}</td>
+                    <td>{trip.notes}</td>
                 </tr>
             )
         })
@@ -49,7 +37,18 @@ const MyRides = (props) => {
         })
     }
 
-    let passengerRides = getPassengerRides();
+    let myRides = getTableRows(
+        filterTrips(
+            props.trips, 
+            {
+                date:props.filter.date,
+                time:props.filter.time,
+                destination:props.filter.destination,
+                username:props.username,
+                matchTo:'passenger'
+            }
+        )
+    );
 
     return (
         <div className="row">
@@ -59,8 +58,8 @@ const MyRides = (props) => {
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>Destination</th>
                             <th>Departure Time</th>
+                            <th>Destination</th>
                             <th>Driver</th>
                             <th>Max Seats</th>
                             <th>Passengers</th>
@@ -68,7 +67,7 @@ const MyRides = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {passengerRides}
+                        {myRides}
                     </tbody>
                 </table>
             </div>

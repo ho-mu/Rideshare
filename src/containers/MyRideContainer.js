@@ -6,7 +6,8 @@ import {removePassenger} from './../actions/actions';
 const mapStateToProps = (state) => {
     return {
         trips:state.trips,
-        username:state.username
+        username:state.username,
+        filter:state.filter
     }
 }
 
