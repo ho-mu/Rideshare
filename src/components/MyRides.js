@@ -43,7 +43,7 @@ const MyRides = (props) => {
         return passengers.map((passenger, index) => {
             if(passenger === props.username){
                 // return <div key={index}>{passenger}<button className='icon icon-close' name={tripID} id={passenger}  onClick={removePassenger} ></button></div> 
-                return <div key={index}>{passenger}<img src={removeImg} className='removeImg myRides' name={tripID} id={passenger}  onClick={removePassenger} /></div> 
+                return <div key={index}>{passenger}<img src={removeImg} className='removeImg myRides' alt='remove_img' name={tripID} id={passenger}  onClick={removePassenger} /></div> 
             }
             return <div key={index}>{passenger}</div>
         })

@@ -37,7 +37,7 @@ const MyDrives = (props) => {
                     <td>{getPassengerTags(ride.passengers)}</td>
                     <td>{ride.notes}</td>
                     {/*<td><button className='icon icon-close' name={ride.id}  onClick={removeTrip} ></button></td>*/}
-                    <td><img src={removeImg} className='removeImg myDrives' name={ride.id}  onClick={removeTrip} /></td>
+                    <td><img src={removeImg} className='removeImg myDrives' alt='remove_img' name={ride.id}  onClick={removeTrip} /></td>
                 </tr>
             )
         })
