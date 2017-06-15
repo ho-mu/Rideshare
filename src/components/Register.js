@@ -29,26 +29,32 @@ export default class Register extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="large-6 columns">
+            <div className="small-6 columns">
               <label>Email</label>
               <input type='email' ref={(email) => this.email = email} placeholder="Email"/>
             </div>
           </div>
           <div className="row">
-            <div className="large-6 columns">
+            <div className="small-6 columns">
               <label>Password</label>
               <input type="password" placeholder="Password" ref={(pw) => this.pw = pw} />
             </div>
           </div>
           {
             this.state.registerError &&
-            <div className="alert alert-danger" role="alert">
-              <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-              <span className="sr-only">Error:</span>
-              &nbsp;{this.state.registerError}
+            <div className="row">
+              <div className="small-12 columns">
+                <span aria-hidden="true"></span>
+                <span className="notification-box alert">Error:
+                &nbsp;{this.state.registerError}</span>
+              </div>
             </div>
           }
-          <button type="submit">Register</button>
+          <div className="row">
+            <div className="small-2 columns">
+              <button type="submit">Register</button>
+            </div>
+          </div>
         </form>
       </div>
     )
