@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Brando Sans";
+  src: url("../../fonts/lv-next/type/brandosans-text-v100.eot");
+  src: url(../../fonts/lv-next/type/brandosans-text-v100.eot?#iefix) format("embedded-opentype"), url(../../fonts/lv-next/type/brandosans-text-v100.woff) format("woff"); }
+
+@font-face {
+  font-family: "Brando Sans";
+  font-style: italic;
+  src: url("../../fonts/lv-next/type/brandosans-textitalic-v100.eot");
+  src: url(../../fonts/lv-next/type/brandosans-textitalic-v100.eot?#iefix) format("embedded-opentype"), url(../../fonts/lv-next/type/brandosans-textitalic-v100.woff) format("woff"); }
+
+@font-face {
+  font-family: "Brando Sans";
+  font-weight: bold;
+  src: url("../../fonts/lv-next/type/brandosans-semibold-v100.eot");
+  src: url(../../fonts/lv-next/type/brandosans-semibold-v100.eot?#iefix) format("embedded-opentype"), url(../../fonts/lv-next/type/brandosans-semibold-v100.woff) format("woff"); }
+
+@font-face {
+  font-family: "Brando Sans";
+  font-style: italic;
+  font-weight: bold;
+  src: url("../../fonts/lv-next/type/brandosans-semibold-v100.eot");
+  src: url(../../fonts/lv-next/type/brandosans-semibold-v100.eot?#iefix) format("embedded-opentype"), url(../../fonts/lv-next/type/brandosans-semibold-v100.woff) format("woff"); }
+
+@font-face {
+  font-family: "Brando";
+  src: url("../../fonts/lv-next/type/brando-semibold-v10.eot");
+  src: url(../../fonts/lv-next/type/brando-semibold-v10.eot?#iefix) format("embedded-opentype"), url(../../fonts/lv-next/type/brando-semibold-v10.woff) format("woff"); }

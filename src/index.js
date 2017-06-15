@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import AppContainer from './containers/AppContainer';
 import { Provider } from 'react-redux'
 import './index.css';
+import './css/nm/fonts.css';
+import './css/nm/icons.css';
+import './css/nm/main.css';
+
 
 import { createStore } from 'redux'
 import reducer from './reducers/reducers'
