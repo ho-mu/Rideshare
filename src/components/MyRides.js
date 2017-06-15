@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 const database = require('./../helpers/firebase.js');
 import {filterTrips} from './../helpers/apiHelper';
 const removeImg = require('./../images/remove_img.png');
+let dateFormat = require('dateformat');
 
 const MyRides = (props) => {
 
@@ -42,17 +43,19 @@ const MyRides = (props) => {
             props.trips, 
             {
                 date:props.filter.date,
-                time:props.filter.time,
                 username:props.username,
                 matchTo:'passenger'
             }
         )
     );
+    
+    let formattedDate = dateFormat(new Date(props.filter.date + 'T12:00:00'), "m/d/yyyy") 
 
     return (
         <div className="row">
             <div className="small-12 columns sg-content">
                 <br/>
+                <h3>Your rides for {formattedDate} and later</h3>
                 <table className='table'>
                     <thead>
                         <tr>

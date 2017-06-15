@@ -9,7 +9,7 @@ const filterTrips = (trips,parameters) => {
     //}
     let filteredTrips = trips.filter((trip,index) => {
         if(parameters.date != undefined){
-            if(trip.date != parameters.date) return false;
+            if(trip.date < parameters.date) return false;
         }
 
         if(parameters.time != undefined){

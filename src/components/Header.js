@@ -26,30 +26,22 @@ class Header extends Component {
                             className={this.state.activeTab === 'myrides'? 
                                 "filter-nav-entry active":
                                 "filter-nav-entry"}
-                            name='myrides'
-                            onClick={this.handleClick}
-                        ><button>My Rides</button></Link></li>        
+                        ><button name='myrides' onClick={this.handleClick}>My Rides</button></Link></li>        
                     <li className='small-3 columns'><Link to='/rides/mydrives'
                             className={this.state.activeTab === 'mydrives'? 
                                 "filter-nav-entry active":
                                 "filter-nav-entry"}
-                            name='mydrives'
-                            onClick={this.handleClick}
-                        ><button>My Drives</button></Link></li>        
+                        ><button name='mydrives' onClick={this.handleClick}>My Drives</button></Link></li>        
                     <li className='small-3 columns'><Link to='/rides/findride'
                             className={this.state.activeTab === 'findride'? 
                                 "filter-nav-entry active":
                                 "filter-nav-entry"}
-                            onClick={this.handleClick}
-                            name='findride'
-                        ><button>Find a Ride</button></Link></li>
+                        ><button onClick={this.handleClick} name='findride'>Find a Ride</button></Link></li>
                     <li className='small-3 columns'><Link to='/rides/offerride'
                             className={this.state.activeTab === 'offerride'? 
                                 "filter-nav-entry active":
                                 "filter-nav-entry"}
-                            onClick={this.handleClick}
-                            name='offerride'
-                        ><button>Offer to Drive</button></Link></li>
+                        ><button onClick={this.handleClick} name='offerride'>Offer to Drive</button></Link></li>
                 </ul>
             </div>
         )
