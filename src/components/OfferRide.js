@@ -1,7 +1,6 @@
 const database = require('./../helpers/firebase.js');
 
 import React, { Component } from 'react';
-let dateFormat = require('dateformat');
 
 
 

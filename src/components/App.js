@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
 import LoginContainer from './../containers/LoginContainer'
 import RegisterContainer from './../containers/RegisterContainer'
-import Home from './Home'
 import Dashboard from './Dashboard';
 import { logout } from '../helpers/auth'
 import { firebaseAuth } from '../config/constants'

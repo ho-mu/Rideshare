@@ -4,7 +4,7 @@ import AppContainer from './containers/AppContainer';
 import { Provider } from 'react-redux'
 import './index.css';
 
-import { createStore, combineReducers } from 'redux'
+import { createStore } from 'redux'
 import reducer from './reducers/reducers'
 
 let store = createStore(

@@ -8,21 +8,21 @@ const filterTrips = (trips,parameters) => {
         //matchTo: 'driver' or 'passenger'
     //}
     let filteredTrips = trips.filter((trip,index) => {
-        if(parameters.date != undefined){
+        if(parameters.date !== undefined){
             if(trip.date < parameters.date) return false;
         }
 
-        if(parameters.time != undefined){
+        if(parameters.time !== undefined){
             if((new Date('1970/01/01 ' + trip.time)) < (new Date('1970/01/01 ' + parameters.time))) return false;
         }
 
-        if(parameters.destination != undefined){
-            if(trip.destination != parameters.destination) return false;
+        if(parameters.destination !== undefined){
+            if(trip.destination !== parameters.destination) return false;
         }
 
-        if(parameters.username != undefined){
+        if(parameters.username !== undefined){
             if(parameters.matchTo === 'driver'){
-                if(trip.driver != parameters.username) return false;
+                if(trip.driver !== parameters.username) return false;
             }else if(parameters.matchTo === 'passenger'){
                 let found = false;
                 for(let i=0; i<trip.passengers.length; i++){
