@@ -50,7 +50,8 @@ const reducer = (prevState,action) => {
 
         let newPassengers = [...targetTrip.passengers]
         let index = newPassengers.indexOf(passenger)
-        newPassengers.splice(index,1)
+        //newPassengers.splice(index,1)
+        newPassengers = [...newPassengers.slice(0, index), ...newPassengers.slice(index+1)]
 
         targetTrip.passengers = newPassengers
 
