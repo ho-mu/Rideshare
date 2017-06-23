@@ -62,7 +62,11 @@ export default class App extends Component {
     this.removeListener = firebaseAuth().onAuthStateChanged((user) => {
       if (firebaseAuth().currentUser){
         //set the redux store!!!
-        this.props.setUser(firebaseAuth().currentUser.displayName)
+         console.log('setting user',firebaseAuth().currentUser.displayName)
+        if (firebaseAuth().currentUser.displayName !== null){
+         
+          this.props.setUser(firebaseAuth().currentUser.displayName)
+        }
       }
       
       if (user) {

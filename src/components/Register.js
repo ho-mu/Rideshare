@@ -13,7 +13,8 @@ export default class Register extends Component {
     e.preventDefault()
     auth(this.email.value, this.pw.value, this.username.value)
       .then((res) => {
-          this.props.setUser(this.username.value)
+          console.log ("setting user",res)
+          this.props.setUser(res)
       })
       .catch(e => this.setState(setErrorMsg(e)))
   }

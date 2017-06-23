@@ -13,7 +13,7 @@ export function auth (email, pw, username) {
       })
 
       saveUser(user)
-
+      return username
     })
 }
 
